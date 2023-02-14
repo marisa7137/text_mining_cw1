@@ -3,27 +3,6 @@ from collections import Counter
 import torch
 import re
 
-"""
-text_parser class 
-    ...
-
-    Attributes
-    ----------
-    name : str
-        first name of the person
-    surname : str
-        family name of the person
-    age : int
-        age of the person
-
-    Methods
-    -------
-    info(additional=""):
-        Prints the person's name and age.
-"""
-
-
-
 class TextParser:
     def __init__(self, config=None):
         self.raw_text_path = './data/train_5500.label.txt'  # Path for the raw text
@@ -89,6 +68,11 @@ class TextParser:
     def remove_stopwords(self, sentence):
         """
         Function:
+        Remove the stopwords from the given sentence
+        Args:
+        self (text parser itself), sentence (the given sentence)
+        Returns:
+        result: a list contain the sentence after removing the stop words.
         
         """
         words = sentence.split()

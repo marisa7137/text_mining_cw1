@@ -4,5 +4,5 @@ from text_parser import TextParser
 
 if __name__ == '__main__':
     t = TextParser()
-    print(t.raw_pair)
+    print(len(t.labels))
     
