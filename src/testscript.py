@@ -4,5 +4,5 @@ from text_parser import TextParser
 
 if __name__ == '__main__':
     t = TextParser()
-    tensor = t.random_initialise_embedding(dim=10)
-    print(t.words)
+    print(t.raw_pair)
+    
