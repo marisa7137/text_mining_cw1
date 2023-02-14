@@ -5,8 +5,8 @@ import torch
 
 class TextParser:
     def __init__(self, config=None):
-        self.raw_text_path = '../data/train_5500.label.txt'  # Path for the raw text
-        self.stopwords_path = '../data/stopwords.txt'  # Path for the stopwords collection text
+        self.raw_text_path = './data/train_5500.label.txt'  # Path for the raw text
+        self.stopwords_path = './data/stopwords.txt'  # Path for the stopwords collection text
         self.training_set_path = ''  # Path for the split training set
         self.dev_set_path = ''  # Path for the developing set
         self.labels_path = ''  # Path for the label collection
