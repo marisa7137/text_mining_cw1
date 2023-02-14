@@ -17,6 +17,7 @@ class TextParser:
         self.labels = []
         self.sentences = []
         self.embedded_data = []
+        self.vocab_count_dict = None
         self.vocab = []  # a vocabulary list contains all words in the document
         self.words = []
         self.split_radio = 0.1  # for splitting the data into developing set and training set
@@ -64,8 +65,8 @@ class TextParser:
 
     def create_vocab(self, to_file=True):
         if len(self.words) > 0:
-            vocab = Counter(self.words)
-            self.vocab = sorted(vocab, key=vocab.get, reverse=True)
+            self.vocab_count_dict = Counter(self.words)
+            self.vocab = sorted(self.vocab_count_dict, key=self.vocab_count_dict.get, reverse=True)
             self.vocab.append('')
             self.vocab.append('#unk#')
             if to_file:
@@ -98,6 +99,12 @@ class TextParser:
                 f2.write(dev_data[j].strip('\n') + '\n')
 
     def random_initialise_embedding(self, dim):
+        np.random.seed(114514)  # fetch a specific random seed
+        word_vec = np.random.rand(dim)
+        return torch.Tensor(word_vec)
+
+    """
+    def count_based_embedding(self, dim):
         for pair in self.raw_pair:
             label = pair[0]
             sentence = pair[1].lower().split(' ')
@@ -110,5 +117,6 @@ class TextParser:
                         word_vec[i] = np.int32(self.vocab.index(word) + 1)
                     else:
                         word_vec[i] = np.int32(self.vocab.index('#unk#') + 1)
-            self.embedded_data.append((label_embedded, torch.LongTensor(word_vec)))
+            self.embedded_data.append((label_embedded, torch.Tensor(word_vec)))
         return self.embedded_data
+    """
