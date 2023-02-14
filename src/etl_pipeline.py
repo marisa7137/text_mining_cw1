@@ -8,7 +8,7 @@ def load_data(train_filepath):
       Function:
       load the train_5500.label text into a modified pandas dataframe
       Args:
-      messages_filepath (str): the file path of messages csv file
+      train_filepath (str): the file path of messages csv file
 
       Returns:
       df (DataFrame): A dataframe of contains two columns: categories and question.
