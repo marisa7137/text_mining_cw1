@@ -47,13 +47,31 @@ class TextParser:
         self.create_vocab(to_file=False)
         self.create_label(to_file=False)
 
+
     def load_stopwords(self):
+        """
+        Function: 
+        load the words from stopwords path and append the words into the stop words list
+        Args: 
+        self (text parser itself)
+        Returns:
+        self.stopwords: a list of stopwords coming from the stopwords path file
+        """
         with open(self.stopwords_path, 'r') as f:
             for line in f:
                 line = line.lower().strip('\n')
                 self.stopwords.append(line)
 
     def load_raw_text(self):
+        """
+        Function:
+        load the train_5500.label file and process it into a raw pair format after lowering and removing the unneccary
+        punctions
+        Args:
+        self (text parser itself)
+        Returns:
+        raw_pair: A pair of label and sentence format from the raw text_file   
+        """
         with open(self.raw_text_path, 'r') as f:
             for line in f:
                 self.raw_sentences.append(line.strip('\n') + '\n')
@@ -61,7 +79,7 @@ class TextParser:
                 pair = line.split(' ', 1)
                 label = pair[0]
                 sentence = self.remove_stopwords(pair[1])
-                sentence = re.sub(r"[^a-zA-Z0-9]", " ", sentence.lower())
+                sentence = re.sub(r"[^a-zA-Z0-9]", " ", sentence)
                 for word in sentence.split(' '):
                     self.words.append(word)
                 self.raw_pair.append((label, sentence))
