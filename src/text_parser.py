@@ -87,6 +87,10 @@ class TextParser:
         
 
     def remove_stopwords(self, sentence):
+        """
+        Function:
+        
+        """
         words = sentence.split()
         result_words = [word for word in words if word.lower() not in self.stopwords]
         result = ' '.join(result_words)
