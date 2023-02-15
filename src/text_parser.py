@@ -2,6 +2,7 @@ import numpy as np
 from collections import Counter
 import torch
 import re
+import csv
 
 class TextParser:
     def __init__(self, config=None):
@@ -16,6 +17,7 @@ class TextParser:
         self.raw_pair = []  # a raw pair is in the format of (label, sentence) where both are strings
         self.labels = []
         self.sentences = []
+        self.tokens = [] # a list of tokens
         self.embedded_data = []
         self.vocab_count_dict = None
         self.vocab = []  # a vocabulary list contains all words in the document
@@ -41,7 +43,8 @@ class TextParser:
             for line in f:
                 line = line.lower().strip('\n')
                 self.stopwords.append(line)
-
+    def tokenize(text,sentence):
+        pass
     def load_raw_text(self):
         """
         Function:
@@ -52,17 +55,35 @@ class TextParser:
         Returns:
         raw_pair: A pair of label and sentence format from the raw text_file   
         """
+        # with open(self.raw_text_path, 'r') as f:
+        #     for line in f:
+        #         self.raw_sentences.append(line.strip('\n') + '\n')
+        #         line = line.lower().strip('\n')
+        #         pair = line.split(' ', 1)
+        #         label = pair[0]
+        #         sentence = self.remove_stopwords(pair[1])
+        #         sentence = re.sub(r"[^a-zA-Z0-9]", ' ', sentence)
+        #         for word in sentence.split(' '):
+        #             self.words.append(word)
+        #         self.raw_pair.append((label, sentence))
+        
+        csv.register_dialect('skip_space', skipinitialspace=True)
         with open(self.raw_text_path, 'r') as f:
-            for line in f:
-                self.raw_sentences.append(line.strip('\n') + '\n')
-                line = line.lower().strip('\n')
-                pair = line.split(' ', 1)
-                label = pair[0]
-                sentence = self.remove_stopwords(pair[1])
-                sentence = re.sub(r"[^a-zA-Z0-9]", " ", sentence)
-                for word in sentence.split(' '):
-                    self.words.append(word)
-                self.raw_pair.append((label, sentence))
+             reader= csv.reader(f , delimiter=' ', dialect='skip_space')
+             for item in reader:
+                 label = item[0]
+                 question = ' '.join(item[1:])
+                 self.raw_sentences.append(question)
+                 sentence = self.remove_stopwords(question)
+                 sentence = re.sub(r"[^a-zA-Z0-9]", ' ', sentence)
+                 for word in sentence.split(' '):
+                     self.words.append(word)
+                 self.raw_pair.append((label, sentence.split(' ')))
+                 
+                 
+                 
+                 
+            
                 
         
 
