@@ -3,6 +3,11 @@ from collections import Counter
 import torch
 import re
 import csv
+import torch, random
+import string
+# Added the random seed generator
+torch.manual_seed(6666666) 
+random.seed(666666)
 
 class TextParser:
     def __init__(self, config=None):
@@ -75,20 +80,14 @@ class TextParser:
                  question = ' '.join(item[1:])
                  self.raw_sentences.append(question)
                  sentence = self.remove_stopwords(question)
-                 sentence = re.sub(r"[^a-zA-Z0-9]", ' ', sentence)
+                 sentence = sentence.lower()
+                 operator = str.maketrans('','',string.punctuation)
+                 sentence = sentence.translate(operator)
                  tokens = sentence.strip().split(' ')
-                 clean_tokens = [token for token in tokens if token != ""]
-                 for word in clean_tokens:
+                 for word in tokens:
                      self.words.append(word)
-                 self.raw_pair.append((label, clean_tokens))
+                 self.raw_pair.append((label, tokens))
                  
-                 
-                 
-                 
-            
-                
-        
-
     def remove_stopwords(self, sentence):
         """
         Function:
