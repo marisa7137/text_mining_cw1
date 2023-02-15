@@ -76,9 +76,11 @@ class TextParser:
                  self.raw_sentences.append(question)
                  sentence = self.remove_stopwords(question)
                  sentence = re.sub(r"[^a-zA-Z0-9]", ' ', sentence)
-                 for word in sentence.split(' '):
+                 tokens = sentence.strip().split(' ')
+                 clean_tokens = [token for token in tokens if token != ""]
+                 for word in clean_tokens:
                      self.words.append(word)
-                 self.raw_pair.append((label, sentence.split(' ')))
+                 self.raw_pair.append((label, clean_tokens))
                  
                  
                  
