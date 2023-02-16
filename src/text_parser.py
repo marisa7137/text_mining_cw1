@@ -16,6 +16,7 @@ class TextParser:
         self.raw_pair = []  # a raw pair is in the format of (label, sentence) where both are strings
         self.labels = []
         self.sentences = []
+        self.indexed_sentence_pair = []
         self.embedded_data = []
         self.vocab_count_dict = None
         self.vocab = []  # a vocabulary list contains all words in the document
@@ -89,8 +90,8 @@ class TextParser:
         dev_size = int(len(self.raw_sentences) * self.split_radio)
         dev_indices = random_indices[:dev_size]
         train_indices = random_indices[dev_size:]
-        train_data = self.raw_sentences[train_indices]
-        dev_data = self.raw_sentences[dev_indices]
+        train_data = [self.raw_sentences[i] for i in train_indices]
+        dev_data = [self.raw_sentences[i] for i in dev_indices]
         with open(self.training_set_path, 'w') as f1:
             for i in range(len(train_data)):
                 f1.write(train_data[i].strip('\n') + '\n')
@@ -98,21 +99,7 @@ class TextParser:
             for j in range(len(dev_data)):
                 f2.write(dev_data[j].strip('\n') + '\n')
 
-    def random_initialise_embedding(self, dim):
-        np.random.seed(114514)  # fetch a specific random seed
-        for pair in self.raw_pair:
-            label = pair[0]
-            sentence = pair[1].lower().split(' ')
-            sentence_embedded = []
-            label_embedded = np.int32(self.labels.index(label))
-            for word in sentence:
-                word_vec = np.random.rand(dim)
-                sentence_embedded.append(torch.Tensor(word_vec))
-            self.embedded_data.append((label_embedded, sentence_embedded))
-        return self.embedded_data
-
-    """
-    def count_based_embedding(self, dim):
+    def get_word_indices(self, dim):
         for pair in self.raw_pair:
             label = pair[0]
             sentence = pair[1].lower().split(' ')
@@ -121,10 +108,9 @@ class TextParser:
             for i in range(dim):
                 if i < len(sentence):
                     word = sentence[i]
-                    if word in self.vocab:
-                        word_vec[i] = np.int32(self.vocab.index(word) + 1)
+                    if sentence[i] in self.vocab:
+                        word_vec[i] = np.int32(self.vocab.index(word))
                     else:
-                        word_vec[i] = np.int32(self.vocab.index('#unk#') + 1)
-            self.embedded_data.append((label_embedded, torch.Tensor(word_vec)))
-        return self.embedded_data
-    """
+                        word_vec[i] = np.int32(self.vocab.index('#unk#'))
+            self.indexed_sentence_pair.append((label_embedded, torch.IntTensor(word_vec)))
+        return self.indexed_sentence_pair
