@@ -170,20 +170,4 @@ class TextParser:
         return self.indexed_sentence_pair
         
 
-    """
-    def count_based_embedding(self, dim):
-        for pair in self.fine_pair:
-            label = pair[0]
-            sentence = pair[1].lower().split(' ')
-            word_vec = np.zeros(dim)
-            label_embedded = np.int32(self.labels.index(label))
-            for i in range(dim):
-                if i < len(sentence):
-                    word = sentence[i]
-                    if word in self.vocab:
-                        word_vec[i] = np.int32(self.vocab.index(word) + 1)
-                    else:
-                        word_vec[i] = np.int32(self.vocab.index('#unk#') + 1)
-            self.embedded_data.append((label_embedded, torch.Tensor(word_vec)))
-        return self.embedded_data
-    """
+
