@@ -140,23 +140,9 @@ class TextParser:
         with open(self.dev_set_path, 'w') as f2:
             for j in range(len(dev_data)):
                 f2.write(dev_data[j].strip('\n') + '\n')
-
-    def random_initialise_embedding(self, dim):
-        np.random.seed(114514)  # fetch a specific random seed
-        for pair in self.raw_pair:
-            label = pair[0]
-            sentence = pair[1].lower().split(' ')
-            sentence_embedded = []
-            label_embedded = np.int32(self.labels.index(label))
-            for word in sentence:
-                word_vec = np.random.rand(dim)
-                sentence_embedded.append(torch.Tensor(word_vec))
-            self.embedded_data.append((label_embedded, sentence_embedded))
-        return self.embedded_data
-
-    """
-    def count_based_embedding(self, dim):
-        for pair in self.raw_pair:
+                
+    def get_word_indices(self, dim):
+        for pair in self.fine_pair:
             label = pair[0]
             sentence = pair[1]
             word_vec = np.zeros(dim)
@@ -170,6 +156,9 @@ class TextParser:
                         word_vec[i] = np.int32(self.vocab.index('#unk#'))
             self.indexed_sentence_pair.append((label_embedded, torch.IntTensor(word_vec)))
         return self.indexed_sentence_pair
-        
+
+
+
+
 
 
