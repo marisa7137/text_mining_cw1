@@ -4,4 +4,5 @@ from text_parser import TextParser
 
 if __name__ == '__main__':
     t = TextParser()
-    print(t.vocab)
+    test = t.get_word_indices(dim=10)
+    print(t.coarse_pair)
