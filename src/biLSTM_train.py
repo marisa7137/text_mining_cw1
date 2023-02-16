@@ -28,8 +28,8 @@ train_dataset = ""
 train_loader = DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True)
 
 # load the model
-device = "cuda" if torch.cuda.is_available() else "cpu"
-model = BILSTM(num_layers=num_layers, hidden_size = hidden_size).to(device)
+# device = "cuda" if torch.cuda.is_available() else "cpu"
+model = BILSTM(num_layers=num_layers, hidden_size = hidden_size)
 
 # Loss and optimizer
 loss_f = nn.CrossEntropyLoss()
