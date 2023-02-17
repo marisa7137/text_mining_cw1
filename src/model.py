@@ -16,7 +16,6 @@ class Model(nn.Module):
 
     def forward(self, indexed_sentence):
         out = self.word_embedding(indexed_sentence)
-        
         out = self.sen_rep(out)
         out = self.fc1(out)
         out = self.af1(out)
