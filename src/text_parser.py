@@ -149,7 +149,7 @@ class TextParser:
                 if type == "coarse":
                     label = pair[0].split(":")[0]
                     label_embedded = np.int32(self.coarse_labels.index(label))
-                # fine pair word indice
+                # fine pair word
                 else:
                     label = pair[0]
                     label_embedded = np.int32(self.fine_labels.index(label))
