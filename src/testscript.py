@@ -16,27 +16,32 @@ import torch.optim as optim
 
 
 if __name__ == '__main__':
-    t = TextParser()
-    wi = t.get_word_indices("fine",dim=10)
-    # random_perm = np.random.permutation(len(wi))
-    # test_size = int(0.1 * len(wi))                       ### change to a fixed number!!!!!!!!
-    # train_indices = random_perm[test_size:]
-    # test_indices = random_perm[:test_size]
+    # coarse
+    # fine
+    class_type = "fine"
 
+    t = TextParser()
+    wi = t.get_word_indices(class_type, dim=18)
 
     # data size = len(wi) = train_indices + test_indices = 5452
     # train_size = 0.9*5452 = 4907
-    train_indices = 4907
+    train_indices = 4905
     # test_size = 0.1*5452 = 545
     test_indices = 545
 
     train_data = [wi[i] for i in range(train_indices)]
     test_data = [wi[i] for i in range(train_indices, train_indices + test_indices)]
 
-    # train the model
-    model_train.train(t, train_data)
+    if class_type == "coarse":
+        # # train the model
+        model_train.train(t, train_data, num_classes=6)
 
-    # test the model
+        # test the model
+        model_test.test(test_data, num_classes=6)
 
-    # print(train_data[1])
-    # model_test.test(test_data, num_classes=len(t.labels))
+    else:
+        # # train the model
+        model_train.train(t, train_data, num_classes=50)
+
+        # test the model
+        model_test.test(test_data, num_classes=50)

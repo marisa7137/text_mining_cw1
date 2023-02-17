@@ -81,17 +81,18 @@ def test(test_data, num_classes):
     '''
 
     # load the data
-    test_loader = DataLoader(test_data, shuffle=True)
+    batch_size = 545
+    test_loader = DataLoader(test_data, batch_size=batch_size, shuffle=True)
 
     # load the model
     if num_classes==6:
-        model = torch.load('./biLSTM_COASE.pth')
+        model = torch.load('./biLSTM_Utilities/biLSTM_COASE.pth')
     else:
-        model = torch.load('./biLSTM_fineclass.pth')
+        model = torch.load('./biLSTM_Utilities/biLSTM_fineclass.pth')
 
     # evaluate model
     model = model.eval()
-    
+
     # define the loss function
     loss_function = torch.nn.NLLLoss(reduction='mean') # calculate the average negative log loss of a batch
 
@@ -100,7 +101,6 @@ def test(test_data, num_classes):
 
     # turn off gradients computation
     with torch.no_grad():
-
         for test_labels, test_features in iter(test_loader):
             test_labels = test_labels.type(torch.LongTensor) # shape (1)
 
@@ -113,13 +113,14 @@ def test(test_data, num_classes):
             test_losses.append(loss)
 
             # get the index of the class with the maximum likelihood
-            output_idx = torch.argmax(output, dim=1).cpu().data.numpy()  # shape: (64,)
+            output_idx = torch.argmax(output, dim=1).cpu().data.numpy()  # shape: (1,)
             
             # calculate the accuracy and F1 score
             acc = accuracy_score(output_idx, test_labels)
             f1 = f1_score(output_idx, test_labels, average="micro")
             test_accs.append(acc)
             test_F1s.append(f1)
+            print(acc, "acc")
 
 
 

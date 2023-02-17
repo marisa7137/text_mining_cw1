@@ -7,8 +7,5 @@ from model import Model
 import torch.optim as optim
 if __name__ == '__main__':
     t = TextParser()
-    print(t.fine_pair)
-    #test = t.get_word_indices("coarse",10)
-    #print(test)
-    
-    
+    test =t.get_word_indices("fine",18)
+    print(test)

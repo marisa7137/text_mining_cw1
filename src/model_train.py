@@ -1,5 +1,6 @@
 import numpy as np
 import torch
+from torch.optim.lr_scheduler import ExponentialLR
 from torch.utils.data.dataloader import DataLoader
 from text_parser import TextParser
 from model import Model
@@ -9,27 +10,27 @@ from sklearn.metrics import accuracy_score, f1_score
 
 
 
-def train(t, train_data):
+def train(t, train_data, num_classes):
     '''
             The main function for testing
     '''
 
-    lr = 1e-1
+    lr = 7e-2
     epochs = 10
-    batch_size = 500
-    num_classes = len(t.fine_labels)
+    batch_size = 545
 
     train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True)
 
-
-
-    model = Model(pre_train_weight=None, vocab_size=len(t.vocab), embedding_dim=20, from_pre_train=False, freeze=False,
+    model = Model(pre_train_weight=None, vocab_size=len(t.vocab), embedding_dim=30, from_pre_train=False, freeze=False,
                     bow=False, hidden_dim_bilstm=20, hidden_layer_size=30, num_of_classes=num_classes)
-    optimizer = optim.Adam(model.parameters(), lr=lr)
+
     loss_function = torch.nn.NLLLoss(reduction='mean') # calculate the average negative log loss of a batch
+
+    optimizer = optim.Adam(model.parameters(), lr=lr)
+    scheduler = ExponentialLR(optimizer, gamma=0.9)
+
     losses, train_accs, train_F1s = [], [], []
     model.train()
-
     for epoch in range(epochs):
         cnt = 0 # the number of batches
         loss_batch = 0 # the sum of average loss of each batch within a epoch
@@ -72,22 +73,24 @@ def train(t, train_data):
         # print for each epoch
         print("Train epoch", f'epoch: {epoch}, loss: {loss_batch/cnt}, accuracy: {acc_batch/cnt}, f1 Score: {f1_batch/cnt}, lr: {adam_lr}')
 
+        # update optimizer scheduler
+        scheduler.step()
 
 
     # plot_history(accList, lossList "./")
 
     # save the model
     if num_classes == 6:
-        np.savetxt("loss_biLSTM_COASE.txt", losses)
-        np.savetxt("acc_biLSTM_COASE.txt", train_accs)
-        np.savetxt("f1_biLSTM_COASE.txt", train_F1s)
-        torch.save(model, './biLSTM_COASE.pth')
+        np.savetxt("./biLSTM_Utilities/loss_biLSTM_COASE.txt", losses)
+        np.savetxt("./biLSTM_Utilities/acc_biLSTM_COASE.txt", train_accs)
+        np.savetxt("./biLSTM_Utilities/f1_biLSTM_COASE.txt", train_F1s)
+        torch.save(model, './biLSTM_Utilities/biLSTM_COASE.pth')
         print("successfully saved the model!")
     else:
-        np.savetxt("loss_biLSTM_fineclass.txt", losses)
-        np.savetxt("acc_biLSTM_fineclass.txt", train_accs)
-        np.savetxt("f1_biLSTM_fineclass.txt", train_F1s)
-        torch.save(model, './biLSTM_fineclass.pth')
+        np.savetxt("./biLSTM_Utilities/loss_biLSTM_fineclass.txt", losses)
+        np.savetxt("./biLSTM_Utilities/acc_biLSTM_fineclass.txt", train_accs)
+        np.savetxt("./biLSTM_Utilities/f1_biLSTM_fineclass.txt", train_F1s)
+        torch.save(model, './biLSTM_Utilities/biLSTM_fineclass.pth')
         print("successfully saved the model!")
 
 
