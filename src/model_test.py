@@ -92,22 +92,24 @@ def test(test_data, num_classes):
     # evaluate model
     model = model.eval()
     
-    # define the loss function and acc
-    loss_function = torch.nn.NLLLoss()
+    # define the loss function
+    loss_function = torch.nn.NLLLoss(reduction='mean') # calculate the average negative log loss of a batch
 
     # initialization
     test_losses, test_accs, test_F1s = [], [], []
 
     # turn off gradients computation
     with torch.no_grad():
+
         for test_labels, test_features in iter(test_loader):
-            test_labels = test_labels.type(torch.LongTensor)
+            test_labels = test_labels.type(torch.LongTensor) # shape (1)
 
             # predict the output
             output = model(test_features)
 
             # calculate the loss
             loss = loss_function(output, test_labels)
+
             test_losses.append(loss)
 
             # get the index of the class with the maximum likelihood
@@ -118,6 +120,8 @@ def test(test_data, num_classes):
             f1 = f1_score(output_idx, test_labels, average="micro")
             test_accs.append(acc)
             test_F1s.append(f1)
+
+
 
     print("Test", f'loss: {np.mean(test_losses)}, accuracy: {np.mean(test_accs)}, f1_score: {np.mean(test_F1s)}')
 
