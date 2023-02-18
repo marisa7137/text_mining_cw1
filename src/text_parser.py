@@ -29,6 +29,7 @@ class TextParser:
         self.words = []
         self.split_radio = 0.1  # for splitting the data into developing set and training set
         self.indexed_sentence_pair = []
+        self.bow_vector=[] #for bow vector collection
 
         self.load_stopwords()
         self.load_raw_text()
@@ -168,6 +169,16 @@ class TextParser:
                         word_vec[i] = np.int32(self.vocab.index('#unk#'))
             self.indexed_sentence_pair.append((label_embedded, torch.IntTensor(word_vec)))
         return self.indexed_sentence_pair
+
+    def bag_of_words_embedding(self): 
+        for sentence in self.embedded_data:
+            sentence_length=len(sentence[1])
+            sentence_sum=torch.zeros(1,10)
+            for word_tensor in sentence[1]:
+                torch.add(sentence_sum,word_tensor,out=sentence_sum)
+            each_bow_vector=(sentence[0],torch.div(sentence_sum,sentence_length))
+            self.bow_vector.append(each_bow_vector)
+        return self.bow_vector
 
 
 
