@@ -144,7 +144,7 @@ class TextParser:
         np.random.seed(114514)  # fetch a specific random seed
         for pair in self.fine_pair:
             label = pair[0]
-            sentence = pair[1].lower().split(' ')
+            sentence=[word.lower() for word in pair[1]]
             sentence_embedded = []
             label_embedded = np.int32(self.labels.index(label))
             for word in sentence:
@@ -168,6 +168,9 @@ class TextParser:
                         word_vec[i] = np.int32(self.vocab.index('#unk#'))
             self.indexed_sentence_pair.append((label_embedded, torch.IntTensor(word_vec)))
         return self.indexed_sentence_pair
+
+
+
         
 
 
