@@ -13,9 +13,13 @@ from torch.utils.data.dataloader import DataLoader
 from text_parser import TextParser
 from model import Model
 import torch.optim as optim
+import sys
+import os
 
 
 if __name__ == '__main__':
+   
+    
     t = TextParser()
     wi = t.get_word_indices("fine",dim=10)
     # random_perm = np.random.permutation(len(wi))

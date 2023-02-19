@@ -4,14 +4,19 @@ import torch
 import re
 import csv
 import torch, random
+from configparser import ConfigParser
+# import the configure files
+config = ConfigParser()
+config.read("src/bow.config")
+
 # Added the random seed generator
 torch.manual_seed(6666666) 
 random.seed(666666)
 
 class TextParser:
-    def __init__(self, config=None):
-        self.raw_text_path = './data/train_5500.label.txt'  # Path for the raw text
-        self.stopwords_path = './data/stopwords.txt'  # Path for the stopwords collection text
+    def __init__(self):
+        self.raw_text_path = config.get("param","train_5500")  # Path for the raw text
+        self.stopwords_path = config.get("param","stop_words")   # Path for the stopwords collection text
         self.training_set_path = ''  # Path for the split training set
         self.dev_set_path = ''  # Path for the developing set
         self.fine_labels_path = ''  # Path for the label collection
@@ -163,7 +168,7 @@ class TextParser:
                             word_vec[i] = np.int32(self.vocab.index(word))
                         else:
                             word_vec[i] = np.int32(self.vocab.index('#unk#'))
-                self.indexed_sentence_pair.append((label_embedded, torch.IntTensor(word_vec)))
+                self.indexed_sentence_pair.append((label_embedded, torch.LongTensor(word_vec)))
             return self.indexed_sentence_pair
 
 
