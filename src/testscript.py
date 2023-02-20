@@ -15,35 +15,33 @@ from model import Model
 import torch.optim as optim
 import sys
 import os
-
+from configparser import ConfigParser
+# import the configure files
+config = ConfigParser()
+config.read("src/bilstm.config")
 
 if __name__ == '__main__':
     # coarse
     # fine
     class_type = "fine"
 
-    t = TextParser()
-    wi = t.get_word_indices(class_type, dim=18)
+    t_train = TextParser(pathfile=config.get("param","path_train"))
+    train_data = t_train.get_word_indices(class_type, dim=18)
+    t_test = TextParser(pathfile=config.get("param","path_dev"))
+    test_data = t_test.get_word_indices(class_type, dim=18)
+    
 
-    # data size = len(wi) = train_indices + test_indices = 5452
-    # train_size = 0.9*5452 = 4907
-    train_indices = 4905
-    # test_size = 0.1*5452 = 545
-    test_indices = 545
-
-    train_data = [wi[i] for i in range(train_indices)]
-    test_data = [wi[i] for i in range(train_indices, train_indices + test_indices)]
 
     if class_type == "coarse":
         # # train the model
-        model_train.train(t, train_data, num_classes=6)
+        model_train.train(t_train, train_data, num_classes=6)
 
         # test the model
         model_test.test(test_data, num_classes=6)
 
     else:
         # # train the model
-        model_train.train(t, train_data, num_classes=50)
+        #model_train.train(t_train, train_data, num_classes=50)
 
         # test the model
         model_test.test(test_data, num_classes=50)

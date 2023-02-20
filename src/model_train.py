@@ -6,6 +6,10 @@ from text_parser import TextParser
 from model import Model
 import torch.optim as optim
 from sklearn.metrics import accuracy_score, f1_score
+from configparser import ConfigParser
+# import the configure files
+config = ConfigParser()
+config.read("src/bilstm.config")
 
 
 
@@ -81,17 +85,17 @@ def train(t, train_data, num_classes):
 
     # save the model
     if num_classes == 6:
-        np.savetxt("./biLSTM_Utilities/loss_biLSTM_COASE.txt", losses)
-        np.savetxt("./biLSTM_Utilities/acc_biLSTM_COASE.txt", train_accs)
-        np.savetxt("./biLSTM_Utilities/f1_biLSTM_COASE.txt", train_F1s)
-        torch.save(model, './biLSTM_Utilities/biLSTM_COASE.pth')
-        print("successfully saved the model!")
+        np.savetxt(config.get("param","loss_bilstm_coase"), losses)
+        np.savetxt(config.get("param","acc_bilstm_coase:"), train_accs)
+        np.savetxt(config.get("param","f1_bilstm_coase"), train_F1s)
+        torch.save(model, config.get("param","bilstm_coase_pth"))
+        print("successfully saved the coase model!")
     else:
-        np.savetxt("./biLSTM_Utilities/loss_biLSTM_fineclass.txt", losses)
-        np.savetxt("./biLSTM_Utilities/acc_biLSTM_fineclass.txt", train_accs)
-        np.savetxt("./biLSTM_Utilities/f1_biLSTM_fineclass.txt", train_F1s)
-        torch.save(model, './biLSTM_Utilities/biLSTM_fineclass.pth')
-        print("successfully saved the model!")
+        np.savetxt(config.get("param","loss_bilstm_fine"), losses)
+        np.savetxt(config.get("param","acc_bilstm_fine"), train_accs)
+        np.savetxt(config.get("param","f1_bilstm_fine"), train_F1s)
+        torch.save(model, config.get("param","bilstm_fine_pth"))
+        print("successfully saved the fine model!")
 
 
 
