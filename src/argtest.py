@@ -7,6 +7,11 @@ from model import Model
 import torch.optim as optim
 from word_embedding import Word_Embedding
 from configparser import ConfigParser
+from configparser import ConfigParser
+# import the configure files
+config = ConfigParser()
+config.read("src/bow.config")
+
 if __name__ == '__main__':
-    t = TextParser()
-    print(t.coarse_pair)
+    t = TextParser(pathfile=config.get("param","path_train"))
+    print(t.fine_pair)

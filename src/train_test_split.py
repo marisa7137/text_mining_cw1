@@ -30,21 +30,22 @@ def random_split(input_data, shuffle=True, ratio=0):
     return sublist_a, sublist_b
 
 def generate_train_dev():
+    # Read the train 5500 label text file
     path = os.path.join(os.getcwd(), "data", "train_5500.label.txt")
     f = open(path)
     lines = f.readlines()
     f.close()
 
-    # split it into 1:9
+    # split the raw file into train and dev using a ratio of 1:9
     train, dev = random_split(lines, shuffle=True, ratio=0.9)
 
-    # write the train data into the train.txt
+    # generate the train data
     file = open(config.get('param','path_train'), 'w')
     for i in range(len(train)):
         file.write(train[i])
     file.close()
 
-    # write the dev data into the train.txt
+    # generate the dev data
     file = open(config.get('param','path_dev'), 'w')
     for i in range(len(dev)):
         file.write(dev[i])

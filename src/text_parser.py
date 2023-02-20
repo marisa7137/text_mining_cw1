@@ -13,12 +13,10 @@ config.read("src/bow.config")
 torch.manual_seed(6666666) 
 random.seed(6)
 
-class TextParser:
-    def __init__(self):
-        self.raw_text_path = config.get("param","train_5500")  # Path for the raw text
+class TextParser():
+    def __init__(self,pathfile):
+        self.raw_text_path = pathfile   # Path for the raw text
         self.stopwords_path = config.get("param","stop_words")   # Path for the stopwords collection text
-        self.training_set_path = ''  # Path for the split training set
-        self.dev_set_path = ''  # Path for the developing set
         self.fine_labels_path = ''  # Path for the label collection
         self.vocab_path = ''  # Path for the vocabulary collection
         self.stopwords = []  # list of a collection of stopwords
@@ -34,7 +32,6 @@ class TextParser:
         self.vocab_count_dict = None
         self.vocab = []  # a vocabulary list contains all words in the document
         self.words = []
-        self.split_radio = 0.1  # for splitting the data into developing set and training set
         self.indexed_sentence_pair = []
 
         self.load_stopwords()
@@ -56,6 +53,7 @@ class TextParser:
             for line in f:
                 line = line.lower().strip('\n')
                 self.stopwords.append(line)
+                
     def load_raw_text(self):
         """
         Function:
@@ -132,23 +130,7 @@ class TextParser:
             coarse_labels_list = [lb[0] for lb in self.coarse_pair]
             coarse_labels = Counter(coarse_labels_list)
             self.coarse_labels = sorted(coarse_labels , key=coarse_labels .get, reverse=True)
-            
-            
-
-    def create_split_data(self):
-        random_indices = np.random.permutation(len(self.raw_sentences))
-        dev_size = int(len(self.raw_sentences) * self.split_radio)
-        dev_indices = random_indices[:dev_size]
-        train_indices = random_indices[dev_size:]
-        train_data = [self.raw_sentences[i] for i in train_indices]
-        dev_data = [self.raw_sentences[i] for i in dev_indices]
-        with open(self.training_set_path, 'w') as f1:
-            for i in range(len(train_data)):
-                f1.write(train_data[i].strip('\n') + '\n')
-        with open(self.dev_set_path, 'w') as f2:
-            for j in range(len(dev_data)):
-                f2.write(dev_data[j].strip('\n') + '\n')
-                
+              
     def get_word_indices(self,type,dim):
             for pair in self.fine_pair:
                 if type == "coarse":
