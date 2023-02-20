@@ -3,6 +3,7 @@ import torch.nn as nn
 from word_embedding import Word_Embedding
 from sentence_rep import Sentence_Rep
 
+
 class Model(nn.Module):
     def __init__(self, pre_train_weight, vocab_size, embedding_dim, from_pre_train: bool, freeze: bool, bow: bool, hidden_dim_bilstm, hidden_layer_size, num_of_classes):
         super().__init__()
