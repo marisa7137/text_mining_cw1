@@ -13,12 +13,25 @@ from torch.utils.data.dataloader import DataLoader
 from text_parser import TextParser
 from model import Model
 import torch.optim as optim
+import sys
+import os
 
 
 if __name__ == '__main__':
+<<<<<<< HEAD
     # coarse
     # fine
     class_type = "fine"
+=======
+   
+    
+    t = TextParser()
+    wi = t.get_word_indices("fine",dim=10)
+    # random_perm = np.random.permutation(len(wi))
+    # test_size = int(0.1 * len(wi))                       ### change to a fixed number!!!!!!!!
+    # train_indices = random_perm[test_size:]
+    # test_indices = random_perm[:test_size]
+>>>>>>> main
 
     t = TextParser()
     wi = t.get_word_indices(class_type, dim=18)

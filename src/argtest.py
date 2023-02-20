@@ -5,7 +5,13 @@ from torch.utils.data.dataloader import DataLoader
 from text_parser import TextParser
 from model import Model
 import torch.optim as optim
+from word_embedding import Word_Embedding
+from configparser import ConfigParser
+from configparser import ConfigParser
+# import the configure files
+config = ConfigParser()
+config.read("src/bow.config")
+
 if __name__ == '__main__':
-    t = TextParser()
-    test =t.get_word_indices("fine",18)
-    print(test)
+    t = TextParser(pathfile=config.get("param","path_train"))
+    print(t.fine_pair)
