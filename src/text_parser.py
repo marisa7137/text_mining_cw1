@@ -11,7 +11,7 @@ config.read("src/bow.config")
 
 # Added the random seed generator
 torch.manual_seed(6666666) 
-random.seed(666666)
+random.seed(6)
 
 class TextParser:
     def __init__(self):
