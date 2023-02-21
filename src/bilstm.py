@@ -23,5 +23,4 @@ class Model(nn.Module):
         out = self.af1(out)
         out = self.fc2(out)
         out = self.af2(out)
-        
-        return out
+        return torch.mean(out, dim=1)
