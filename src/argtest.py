@@ -3,7 +3,7 @@ import numpy as np
 import torch
 from torch.utils.data.dataloader import DataLoader
 from text_parser import TextParser
-from model import Model
+from bilstm import Model
 import torch.optim as optim
 from word_embedding import Word_Embedding
 from configparser import ConfigParser

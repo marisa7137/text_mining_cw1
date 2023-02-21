@@ -3,15 +3,15 @@ import numpy as np
 import torch
 from torch.utils.data.dataloader import DataLoader
 from text_parser import TextParser
-from model import Model
+from bilstm import Model
 import torch.optim as optim
-import model_train
-import model_test
+import bilstm_train
+import bilstm_test
 import numpy as np
 import torch
 from torch.utils.data.dataloader import DataLoader
 from text_parser import TextParser
-from model import Model
+from bilstm import Model
 import torch.optim as optim
 import sys
 import os
@@ -34,14 +34,14 @@ if __name__ == '__main__':
 
     if class_type == "coarse":
         # # train the model
-        model_train.train(t_train, train_data, num_classes=6)
+        Model.train(t_train, train_data, num_classes=6)
 
         # test the model
-        model_test.test(test_data, num_classes=6)
+        bilstm_test.test(test_data, num_classes=6)
 
     else:
         # # train the model
-        #model_train.train(t_train, train_data, num_classes=50)
+        bilstm_train.train(t_train, train_data, num_classes=50)
 
         # test the model
-        model_test.test(test_data, num_classes=50)
+       # bilstm_test.test(test_data, num_classes=50)

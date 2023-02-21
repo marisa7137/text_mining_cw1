@@ -3,7 +3,7 @@ import torch
 from torch.optim.lr_scheduler import ExponentialLR
 from torch.utils.data.dataloader import DataLoader
 from text_parser import TextParser
-from model import Model
+from bilstm import Model
 import torch.optim as optim
 from sklearn.metrics import accuracy_score, f1_score
 from configparser import ConfigParser
@@ -86,7 +86,7 @@ def train(t, train_data, num_classes):
     # save the model
     if num_classes == 6:
         np.savetxt(config.get("param","loss_bilstm_coase"), losses)
-        np.savetxt(config.get("param","acc_bilstm_coase:"), train_accs)
+        np.savetxt(config.get("param","acc_bilstm_coase"), train_accs)
         np.savetxt(config.get("param","f1_bilstm_coase"), train_F1s)
         torch.save(model, config.get("param","bilstm_coase_pth"))
         print("successfully saved the coase model!")
