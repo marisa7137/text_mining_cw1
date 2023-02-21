@@ -7,7 +7,7 @@ class Word_Embedding(nn.Module):
         if from_pre_train:
             self.embedding = nn.Embedding.from_pretrained(pre_train_weight, freeze=freeze)
         else:
-            self.embedding = nn.Embedding(num_embeddings=vocab_size, embedding_dim=embedding_dim)
+            self.embedding = nn.Embedding(num_embeddings=vocab_size, embedding_dim=embedding_dim,padding_idx=0)
 
     def forward(self, word_indices):
         out = self.embedding(word_indices)

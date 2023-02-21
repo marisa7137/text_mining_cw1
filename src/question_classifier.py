@@ -1,29 +1,21 @@
-import torch
-import numpy as np
 import argparse
-from torch import nn
 from configparser import ConfigParser
 import numpy as np
 import torch
-from torch.utils.data.dataloader import DataLoader
 from text_parser import TextParser
 from bilstm import Model
 import bilstm_train
 import bilstm_test
 import numpy as np
 import torch
-from torch.utils.data.dataloader import DataLoader
 from text_parser import TextParser
-from bilstm import Model
-import torch.optim as optim
 from configparser import ConfigParser
-import sys
-import os
+
 
 # python3 src/question_classifier.py --train --config "src/bilstm.config" --class_label "fine"
 
-
 if __name__ == '__main__':
+    
     config = ConfigParser()
     parser = argparse.ArgumentParser(description='Argument parser for loading config, training, testing')
     parser.add_argument('--config', type=str, required=True, help='Configuration file',default="src/bilstm.config")

@@ -14,4 +14,5 @@ config.read("src/bow.config")
 
 if __name__ == '__main__':
     t = TextParser(pathfile=config.get("param","path_train"))
-    print(t.fine_pair)
+    t.get_word_indices("coarse",18)
+    print(t.indexed_sentence_pair[0])
