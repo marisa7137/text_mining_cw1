@@ -30,6 +30,7 @@ if __name__ == '__main__':
     train_data = t_train.get_word_indices(args.class_label, dim=18)
     t_test = TextParser(pathfile=config.get("param","path_dev"))
     test_data = t_test.get_word_indices(args.class_label, dim=18)
+    test_sentecnt = t_test.raw_sentences
 
     if(args.train):
         if(args.class_label == "fine"):
