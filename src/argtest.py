@@ -14,9 +14,9 @@ from configparser import ConfigParser
 if __name__ == '__main__':
     config = ConfigParser()
     config.read('src/bilstm.config')
-    t = TextParser(pathfile=config.get("param","path_train"),tofile=False)
-    print(len(t.vocab))
-    
+    t_test = TextParser(pathfile=config.get("param","path_test"),tofile=False)
+    test_data = t_test.get_word_indices("fine", dim=20, from_file=True)
+    print(t_test.fine_pair)
     
     
     
