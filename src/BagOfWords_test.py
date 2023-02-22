@@ -4,12 +4,16 @@ from torch.utils.data.dataloader import DataLoader
 from sklearn.metrics import accuracy_score, f1_score
 from configparser import ConfigParser
 # import the configure files
-config = ConfigParser()
-config.read("src/BagofWords.config")
+#config = ConfigParser()
+#config.read("src/BagofWords.config")
 
-def test(test_data, num_classes):
+def test(test_data, num_classes, model_pth):
     '''
-        The main function for testing
+    The main function for testing
+    :param list test_data: the test data
+    :param int num_classes: the number of classes, 6 or 50
+    :param str model_pth: the path of trained model file
+    :return: None
     '''
 
     # load the data
@@ -19,9 +23,11 @@ def test(test_data, num_classes):
 
     # load the model
     if num_classes==6:
-        model = torch.load(config.get("param","bow_coase_pth"))
+        #model = torch.load(config.get("param","bow_coase_pth"))
+        model = torch.load(model_pth)
     else:
-        model = torch.load(config.get("param","bow_fine_pth"))
+        #model = torch.load(config.get("param","bow_fine_pth"))
+        model = torch.load(model_pth)
 
     # evaluate model
     model = model.eval()
@@ -35,8 +41,12 @@ def test(test_data, num_classes):
     # turn off gradients computation
     with torch.no_grad():
         for test_labels, test_features in iter(test_loader):
-            test_labels = test_labels.type(torch.LongTensor) # shape (1)
+            test_labels = test_labels.type(torch.LongTensor) # shape (545, )
 
+            # to ensure the word embedding work correctly
+            if len(test_labels) != batch_size:
+                break
+            
             # predict the output
             output = model(test_features)
 
@@ -57,10 +67,5 @@ def test(test_data, num_classes):
             print(acc, "acc")
     
                 
-                
-                
-
-
-
     print("Test", f'loss: {np.mean(test_losses)}, accuracy: {np.mean(test_accs)}, f1_score: {np.mean(test_F1s)}')
 
