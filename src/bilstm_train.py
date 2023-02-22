@@ -175,4 +175,5 @@ def train(t, train_data, dev_data, num_classes):
         np.savetxt(config.get("param", "f1_bilstm_coase"), dev_F1s)
 
         # save the model
+        torch.save(model, config.get("param","bilstm_fine_pth"))
         print("successfully saved the fine model!")
