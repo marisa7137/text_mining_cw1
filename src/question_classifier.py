@@ -1,3 +1,17 @@
+'''
+    ***** REMINDER *****
+
+    ** Before submitting:
+    1. Remove unused/impermissible libraries
+    2. Remove prints that are not required. e.g. the prints of saving in the training file
+    3. Check the settings are as required. e.g. epoch=10
+
+
+    ** Execution:
+    python src/question_classifier.py --train --config "src/bilstm.config" --class_label "fine"
+    python src/question_classifier.py --test --config "src/bilstm.config" --class_label "fine"
+'''
+
 import argparse
 from configparser import ConfigParser
 import numpy as np
@@ -15,8 +29,6 @@ import BagofWords_train
 # Added the random seed generator
 
 
-# python src\question_classifier.py --train --config "src\bilstm.config" --class_label "fine"
-
 if __name__ == '__main__':
     torch.manual_seed(6)
     np.random.seed(6)
@@ -32,21 +44,24 @@ if __name__ == '__main__':
 
     t_train = TextParser(pathfile=config.get("param","path_train"),tofile=False)
     train_data = t_train.get_word_indices(args.class_label, dim=20, from_file=True)
-    t_test = TextParser(pathfile=config.get("param","path_dev"),tofile=False)
-    test_data = t_test.get_word_indices(args.class_label, dim=20, from_file=True)
+    t_dev = TextParser(pathfile=config.get("param","path_dev"),tofile=False)
+    dev_data = t_dev.get_word_indices(args.class_label, dim=20, from_file=True) # development data (validation)
+
+    # test data have not been not read yet
+    test_data = []
 
     if(args.train):
         if(args.class_label == "fine"):
              # do the train function
             if(config.get("param","model")=="bow"):
-                BagofWords_train.train(t_train, train_data, num_classes=50)
+                BagofWords_train.train(t_train, train_data, dev_data, num_classes=50)
             elif (config.get("param","model")=="bilstm"):
-                bilstm_train.train(t_train, train_data, num_classes=50)
+                bilstm_train.train(t_train, train_data, dev_data, num_classes=50)
         elif(args.class_label == "coarse"):
             if(config.get("param","model")=="bow"):
-                BagofWords_train.train(t_train, train_data, num_classes=6)
+                BagofWords_train.train(t_train, train_data, dev_data, num_classes=6)
             elif (config.get("param","model")=="bilstm"):
-                bilstm_train.train(t_train, train_data, num_classes=6)
+                bilstm_train.train(t_train, train_data, dev_data, num_classes=6)
             
             
     if(args.test):
