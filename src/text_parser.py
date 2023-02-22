@@ -7,11 +7,11 @@ import torch, random
 from configparser import ConfigParser
 # import the configure files
 config = ConfigParser()
-config.read("src/bow.config")
+config.read("src/bilstm.config")
 
 
 class TextParser():
-    def __init__(self, pathfile):
+    def __init__(self, pathfile, tofile):
         self.raw_text_path = pathfile   # Path for the raw text
         self.is_fine = True
         self.stopwords_path = config.get("param","stop_words")     # Path for the stopwords collection text
@@ -35,8 +35,8 @@ class TextParser():
 
         self.load_stopwords()
         self.load_raw_text()
-        self.create_vocab(to_file=True)
-        self.create_label(to_file=False)
+        self.create_vocab(to_file=tofile)
+        self.create_label(to_file=tofile)
 
 
     def load_stopwords(self):
@@ -75,7 +75,7 @@ class TextParser():
                  self.raw_sentences.append(question)
                  sentence = self.remove_stopwords(question)
                  sentence = re.sub(r"[^a-zA-Z0-9]", ' ', sentence)
-                 tokens = sentence.lower().strip().split(' ')
+                 tokens = sentence.strip().split(' ')
                  clean_tokens = [token for token in tokens if token != ""]
                  for word in clean_tokens:
                      self.words.append(word)

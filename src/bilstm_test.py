@@ -2,12 +2,9 @@ import numpy as np
 import torch
 from torch.utils.data.dataloader import DataLoader
 from sklearn.metrics import accuracy_score, f1_score
-from configparser import ConfigParser
-# import the configure files
-config = ConfigParser()
-config.read("src/bilstm.config")
 
-def test(test_data, num_classes):
+
+def test(test_data, num_classes,model_pth):
     '''
         The main function for testing
     '''
@@ -19,9 +16,9 @@ def test(test_data, num_classes):
 
     # load the model
     if num_classes==6:
-        model = torch.load(config.get("param","bilstm_coase_pth"))
+        model = torch.load(model_pth)
     else:
-        model = torch.load(config.get("param","bilstm_fine_pth"))
+        model = torch.load(model_pth)
 
     # evaluate model
     model = model.eval()
@@ -55,6 +52,7 @@ def test(test_data, num_classes):
             test_accs.append(acc)
             test_F1s.append(f1)
             print(acc, "acc")
+            break
     
                 
                 

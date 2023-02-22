@@ -11,9 +11,6 @@ from configparser import ConfigParser
 config = ConfigParser()
 config.read("src/bilstm.config")
 
-
-
-
 def train(t, train_data, num_classes):
     '''
             The main function for testing

@@ -30,9 +30,9 @@ if __name__ == '__main__':
     args = parser.parse_args()
     config.read(args.config)
 
-    t_train = TextParser(pathfile=config.get("param","path_train"))
+    t_train = TextParser(pathfile=config.get("param","path_train"),tofile=False)
     train_data = t_train.get_word_indices(args.class_label, dim=20, from_file=True)
-    t_test = TextParser(pathfile=config.get("param","path_dev"))
+    t_test = TextParser(pathfile=config.get("param","path_dev"),tofile=False)
     test_data = t_test.get_word_indices(args.class_label, dim=20, from_file=True)
 
     if(args.train):
@@ -54,11 +54,11 @@ if __name__ == '__main__':
             if(config.get("param","model")=="bow"):
                 BagOfWords_test.test(test_data, num_classes=50)
             elif (config.get("param","model")=="bilstm"):
-                bilstm_test.test(test_data, num_classes=50)
+                bilstm_test.test(test_data, num_classes=50,model_pth=config.get("param","bilstm_fine_pth"))
         elif(args.class_label == "coarse"):
             if(config.get("param","model")=="bow"):
                 BagOfWords_test.test(test_data, num_classes=6)
             elif (config.get("param","model")=="bilstm"):
-                bilstm_test.test(test_data, num_classes=6)
+                bilstm_test.test(test_data, num_classes=6,model_pth=config.get("param","bilstm_coase_pth"))
             
         
