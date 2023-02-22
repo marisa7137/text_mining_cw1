@@ -13,7 +13,16 @@ class Sentence_Rep(nn.Module):
 
     def forward(self, word_vecs):
         if self.bow:
-            out = word_vecs
+            bow_vector=[]
+            for sentence in word_vecs:
+                dim0,dim1=sentence.shape
+                word_sum=torch.zeros(dim1)
+                for word in sentence:
+                    word_sum=torch.add(word_sum,word)
+                bow_sentence_tensor=torch.div(word_sum,dim0)
+                bow_sentence_tensor=bow_sentence_tensor.detach()
+                bow_vector.append(bow_sentence_tensor)
+            out=torch.stack(bow_vector,0)
             return out
         else:
             bilstm_out, _ = self.bilstm(word_vecs)

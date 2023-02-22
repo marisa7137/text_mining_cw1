@@ -20,14 +20,14 @@ def train(t, train_data, num_classes):
             The main function for testing
     '''
 
-    lr = 7e-2
+    lr = 2e-2
     epochs = 10
     batch_size = 545
 
     train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True)
 
-    model = Model(pre_train_weight=None, vocab_size=len(t.vocab), embedding_dim=30, from_pre_train=False, freeze=False,
-                    bow=True, hidden_dim_bilstm=20, hidden_layer_size=30, num_of_classes=num_classes)
+    model = Model(pre_train_weight=None, vocab_size=len(t.vocab), embedding_dim=300, from_pre_train=False, freeze=False,
+                    bow=True, hidden_dim_bilstm=200, hidden_layer_size=50, num_of_classes=num_classes)
 
     loss_function = torch.nn.NLLLoss(reduction='mean') # calculate the average negative log loss of a batch
 
@@ -50,6 +50,10 @@ def train(t, train_data, num_classes):
             #print(model)
             output = model(train_features) # shape (batch_size, class_num) <==> (500, 50)
             #print("output size:",output.shape)
+            #print("output:",output)
+            #print("output size:",output.shape)
+            #print("train label:",train_labels)
+            #print("trainlabel size:",train_labels.shape)
 
             # compute loss
             loss = loss_function(output, train_labels)  # calculate loss
@@ -57,6 +61,8 @@ def train(t, train_data, num_classes):
 
             # get the index of the class with the maximum likelihood
             output_idx = torch.argmax(output, dim=1).cpu().data.numpy() # shape: (64,)
+            #print("output_idx:",output_idx)
+            #print("output_idx size:",output_idx.shape)
 
             # accuracy and f1
             acc = accuracy_score(output_idx, train_labels)

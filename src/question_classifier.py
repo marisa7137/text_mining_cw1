@@ -10,13 +10,15 @@ import numpy as np
 import torch
 from text_parser import TextParser
 from configparser import ConfigParser
+import BagOfWords_test
+import BagofWords_train
 # Added the random seed generator
 
 
 # python src\question_classifier.py --train --config "src\bilstm.config" --class_label "fine"
 
 if __name__ == '__main__':
-    torch.manual_seed(6666666)
+    torch.manual_seed(6)
     np.random.seed(6)
     config = ConfigParser()
     parser = argparse.ArgumentParser(description='Argument parser for loading config, training, testing')
@@ -37,12 +39,12 @@ if __name__ == '__main__':
         if(args.class_label == "fine"):
              # do the train function
             if(config.get("param","model")=="bow"):
-                pass
+                BagofWords_train.train(t_train, train_data, num_classes=50)
             elif (config.get("param","model")=="bilstm"):
                 bilstm_train.train(t_train, train_data, num_classes=50)
         elif(args.class_label == "coarse"):
             if(config.get("param","model")=="bow"):
-                pass
+                BagofWords_train.train(t_train, train_data, num_classes=6)
             elif (config.get("param","model")=="bilstm"):
                 bilstm_train.train(t_train, train_data, num_classes=6)
             
@@ -50,12 +52,12 @@ if __name__ == '__main__':
     if(args.test):
         if(args.class_label == "fine"):
             if(config.get("param","model")=="bow"):
-                pass
+                BagOfWords_test.test(test_data, num_classes=50)
             elif (config.get("param","model")=="bilstm"):
                 bilstm_test.test(test_data, num_classes=50)
         elif(args.class_label == "coarse"):
             if(config.get("param","model")=="bow"):
-                pass
+                BagOfWords_test.test(test_data, num_classes=6)
             elif (config.get("param","model")=="bilstm"):
                 bilstm_test.test(test_data, num_classes=6)
             

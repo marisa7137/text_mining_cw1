@@ -35,7 +35,7 @@ class TextParser():
 
         self.load_stopwords()
         self.load_raw_text()
-        self.create_vocab(to_file=False)
+        self.create_vocab(to_file=True)
         self.create_label(to_file=False)
 
 
@@ -75,7 +75,7 @@ class TextParser():
                  self.raw_sentences.append(question)
                  sentence = self.remove_stopwords(question)
                  sentence = re.sub(r"[^a-zA-Z0-9]", ' ', sentence)
-                 tokens = sentence.strip().split(' ')
+                 tokens = sentence.lower().strip().split(' ')
                  clean_tokens = [token for token in tokens if token != ""]
                  for word in clean_tokens:
                      self.words.append(word)
