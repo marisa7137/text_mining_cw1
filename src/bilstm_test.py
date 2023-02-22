@@ -15,6 +15,7 @@ def test(test_data, num_classes):
     # load the data
     batch_size = 545
     test_loader = DataLoader(test_data, batch_size=batch_size, shuffle=True)
+    
 
     # load the model
     if num_classes==6:
@@ -46,6 +47,7 @@ def test(test_data, num_classes):
 
             # get the index of the class with the maximum likelihood
             output_idx = torch.argmax(output, dim=1).cpu().data.numpy()  # shape: (1,)
+            print(test_labels.shape)
             
             # calculate the accuracy and F1 score
             acc = accuracy_score(output_idx, test_labels)
@@ -53,6 +55,10 @@ def test(test_data, num_classes):
             test_accs.append(acc)
             test_F1s.append(f1)
             print(acc, "acc")
+    
+                
+                
+                
 
 
 
