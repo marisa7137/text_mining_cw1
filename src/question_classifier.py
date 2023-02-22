@@ -50,7 +50,7 @@ if __name__ == '__main__':
     # test data have not been not read yet
     test_data = []
 
-    if(args.train):
+   if(args.train):
         if(args.class_label == "fine"):
              # do the train function
             if(config.get("param","model")=="bow"):
@@ -67,13 +67,15 @@ if __name__ == '__main__':
     if(args.test):
         if(args.class_label == "fine"):
             if(config.get("param","model")=="bow"):
-                BagOfWords_test.test(test_data, num_classes=50)
+                BagOfWords_test.test(test_data, num_classes=50,model_pth=config.get("param","bow_fine_pth"))
             elif (config.get("param","model")=="bilstm"):
                 bilstm_test.test(test_data, num_classes=50,model_pth=config.get("param","bilstm_fine_pth"))
         elif(args.class_label == "coarse"):
             if(config.get("param","model")=="bow"):
-                BagOfWords_test.test(test_data, num_classes=6)
+                BagOfWords_test.test(test_data, num_classes=6,model_pth=config.get("param","bow_coase_pth"))
             elif (config.get("param","model")=="bilstm"):
                 bilstm_test.test(test_data, num_classes=6,model_pth=config.get("param","bilstm_coase_pth"))
+            
+        
             
         
