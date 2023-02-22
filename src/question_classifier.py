@@ -50,7 +50,7 @@ if __name__ == '__main__':
     # test data have not been not read yet
     test_data = []
 
-   if(args.train):
+    if(args.train):
         if(args.class_label == "fine"):
              # do the train function
             if(config.get("param","model")=="bow"):
