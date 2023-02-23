@@ -4,6 +4,8 @@
     1. Remove unused/impermissible libraries
     2. Remove prints that are not required. e.g. the prints of saving in the training file
     3. Check the settings are as required. e.g. epoch=10
+    4. Maybe remove the BILSTM & BOW utilities file to fit the requirement of the structure
+    5. Check if there is a README file
     ** Execution:
     python src/question_classifier.py --train --config "src/bilstm.config" --class_label "fine"
     python src/question_classifier.py --test --config "src/bilstm.config" --class_label "fine"
@@ -27,8 +29,8 @@ import BagofWords_train
 
 
 if __name__ == '__main__':
-    torch.manual_seed(6)
-    np.random.seed(6)
+    torch.manual_seed(1)
+    np.random.seed(1)
     config = ConfigParser()
     parser = argparse.ArgumentParser(
         description='Argument parser for loading config, training, testing')

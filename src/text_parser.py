@@ -5,7 +5,6 @@ import csv
 import torch
 import string
 
-
 class TextParser():
     def __init__(self, pathfile, tofile, stopwords_pth, fine_label_pth, coarse_label_pth, vocab_pth):
         self.raw_text_path = pathfile   # Path for the raw text
@@ -71,6 +70,7 @@ class TextParser():
                 self.raw_sentences.append(question)
                 sentence = self.remove_stopwords(question)
                 tokens = sentence.lower().strip().split(' ')
+                # consider some words such as u.s. as a word
                 clean_tokens = [token for token in tokens if token != "" and token not in string.punctuation]
                 for word in clean_tokens:
                     self.words.append(word)
