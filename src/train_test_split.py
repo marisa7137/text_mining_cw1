@@ -3,7 +3,7 @@ import os
 from configparser import ConfigParser
 # import the configure files
 config = ConfigParser()
-config.read("src/bow.config")
+config.read("bow.config")
 
 random.seed(6)
 

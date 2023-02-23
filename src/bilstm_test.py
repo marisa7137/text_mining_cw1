@@ -14,7 +14,7 @@ def test(test_data, num_classes, model_pth):
     '''
 
     # load the data
-    batch_size = 545
+    batch_size = 64
     test_loader = DataLoader(test_data, batch_size=batch_size, shuffle=True)
     
 

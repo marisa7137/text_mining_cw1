@@ -23,18 +23,24 @@ class Model(nn.Module):
         super().__init__()
         self.word_embedding = Word_Embedding(pre_train_weight=pre_train_weight, vocab_size=vocab_size, embedding_dim=embedding_dim, from_pre_train=from_pre_train, freeze=freeze)
         self.sen_rep = Sentence_Rep(bow=bow, embedding_dim=embedding_dim, hidden_dim_bilstm=hidden_dim_bilstm)
-        self.fc1 = nn.Linear(in_features=hidden_dim_bilstm * 2, out_features=hidden_layer_size)
+        self.bn = nn.BatchNorm1d(2*hidden_dim_bilstm)
+        self.fc1 = nn.Linear(in_features=2*hidden_dim_bilstm, out_features=hidden_layer_size)
         self.af1 = nn.LeakyReLU(0.1)
-        self.fc2 = nn.Linear(in_features=hidden_layer_size, out_features=num_of_classes)
-        self.af2 = nn.LogSoftmax(dim=0)
+        self.fc2 = nn.Linear(in_features=hidden_layer_size, out_features=hidden_layer_size)
+        self.af2 = nn.LeakyReLU(0.1)
+        self.fc3 = nn.Linear(in_features=hidden_layer_size, out_features=num_of_classes)
+        self.af3 = nn.LogSoftmax(dim=0)
 
 
     def forward(self, indexed_sentence):
         out = self.word_embedding(indexed_sentence)
         # print(out.shape)
         out = self.sen_rep(out)
+        out = self.bn(out)
         out = self.fc1(out)
         out = self.af1(out)
         out = self.fc2(out)
         out = self.af2(out)
+        out = self.fc3(out)
+        out = self.af3(out)
         return out

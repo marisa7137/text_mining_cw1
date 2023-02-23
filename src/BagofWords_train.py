@@ -10,7 +10,7 @@ from sklearn.metrics import accuracy_score, f1_score
 from configparser import ConfigParser
 # import the configure files
 config = ConfigParser()
-config.read("src/BagofWords.config")
+config.read("BagofWords.config")
 
 
 

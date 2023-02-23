@@ -6,7 +6,7 @@ class Sentence_Rep(nn.Module):
     def __init__(self, bow: bool, embedding_dim, hidden_dim_bilstm):
         super().__init__()
         self.hidden_dim_bilstm = hidden_dim_bilstm
-        self.bilstm = nn.LSTM(input_size=embedding_dim, hidden_size=hidden_dim_bilstm, bidirectional=True, batch_first=True)
+        self.bilstm = nn.LSTM(input_size=embedding_dim, num_layers=2, hidden_size=hidden_dim_bilstm, bidirectional=True, batch_first=True)
         # self.fc = nn.Linear(in_features=hidden_dim_bilstm * 2, out_features=embedding_dim)
         self.bow = bow
 

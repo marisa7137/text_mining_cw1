@@ -27,11 +27,11 @@ import BagofWords_train
 
 
 if __name__ == '__main__':
-    torch.manual_seed(6)
-    np.random.seed(6)
+    torch.manual_seed(1)
+    np.random.seed(1)
     config = ConfigParser()
     parser = argparse.ArgumentParser(description='Argument parser for loading config, training, testing')
-    parser.add_argument('--config', type=str, required=True, help='Configuration file',default="src/bilstm.config")
+    parser.add_argument('--config', type=str, required=True, help='Configuration file',default="bilstm.config")
     parser.add_argument('--train', action='store_true', help='Training mode - model is saved')
     parser.add_argument('--test', action='store_true', help='Testing mode - needs a model to load')
     parser.add_argument('--class_label',type=str,required=True, help= 'different class fine',default= "fine")
@@ -41,14 +41,14 @@ if __name__ == '__main__':
     
     # training data
     t_train = TextParser(pathfile=config.get("param","path_train"),tofile=False)
-    train_data = t_train.get_word_indices(args.class_label, dim=20, from_file=True)
+    train_data = t_train.get_word_indices_from_glove(args.class_label, dim=20)
     # developemnt data
     t_dev = TextParser(pathfile=config.get("param","path_dev"),tofile=False)
-    dev_data = t_dev.get_word_indices(args.class_label, dim=20, from_file=True) # development data (validation)
+    dev_data = t_dev.get_word_indices_from_glove(args.class_label, dim=20) # development data (validation)
 
     # test data
     t_test = TextParser(pathfile=config.get("param","path_test"),tofile=False)
-    test_data = t_test.get_word_indices(args.class_label, dim=20, from_file=True)
+    test_data = t_test.get_word_indices_from_glove(args.class_label, dim=20)
     
 
     if(args.train):
@@ -57,12 +57,12 @@ if __name__ == '__main__':
             if(config.get("param","model")=="bow"):
                 BagofWords_train.train(t_train, train_data, dev_data, num_classes=50)
             elif (config.get("param","model")=="bilstm"):
-                bilstm_train.train(t_train, train_data, dev_data, num_classes=50)
+                bilstm_train.train(t_train, train_data, dev_data, num_classes=50, pre_trained_weight=t_train.glove_embedding)
         elif(args.class_label == "coarse"):
             if(config.get("param","model")=="bow"):
                 BagofWords_train.train(t_train, train_data, dev_data, num_classes=6)
             elif (config.get("param","model")=="bilstm"):
-                bilstm_train.train(t_train, train_data, dev_data, num_classes=6)
+                bilstm_train.train(t_train, train_data, dev_data, num_classes=6, pre_trained_weight=t_train.glove_embedding)
             
             
     if(args.test):

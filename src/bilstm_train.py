@@ -9,7 +9,7 @@ from sklearn.metrics import accuracy_score, f1_score
 from configparser import ConfigParser
 # import the configure files
 config = ConfigParser()
-config.read("src/bilstm.config")
+config.read("bilstm.config")
 
 
 def development(batch_size, dev_loader, model, loss_function, dev_losses, dev_accs, dev_F1s):
@@ -56,7 +56,7 @@ def development(batch_size, dev_loader, model, loss_function, dev_losses, dev_ac
 
 
 
-def train(t, train_data, dev_data, num_classes):
+def train(t, train_data, dev_data, num_classes, pre_trained_weight=None):
     '''
     The main function for training
     :param TextParser t: test parser
@@ -66,19 +66,19 @@ def train(t, train_data, dev_data, num_classes):
     :return: None
     '''
 
-    lr = 2e-2
+    lr = 1e-2
     epochs = 10
     batch_size = 545
 
     train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True)
     dev_loader = DataLoader(dev_data, batch_size=batch_size, shuffle=True)
 
-    model = Model(pre_train_weight=None, vocab_size=len(t.vocab), embedding_dim=200, from_pre_train=False, freeze=False,
-                    bow=False, hidden_dim_bilstm=500, hidden_layer_size=50, num_of_classes=num_classes)
+    model = Model(pre_train_weight=pre_trained_weight, vocab_size=len(t.glove_vocab), embedding_dim=300, from_pre_train=True, freeze=False,
+                    bow=False, hidden_dim_bilstm=300, hidden_layer_size=50, num_of_classes=num_classes)
 
     loss_function = torch.nn.NLLLoss(reduction='mean') # calculate the average negative log loss of a batch
 
-    optimizer = optim.Adam(model.parameters(), lr=lr)
+    optimizer = optim.RAdam(model.parameters(), lr=lr)
     scheduler = ExponentialLR(optimizer, gamma=0.9)
 
     # initialize the lists that record the results
