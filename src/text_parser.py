@@ -1,9 +1,9 @@
 import numpy as np
 from collections import Counter
 import torch
-import re
 import csv
 import torch
+import string
 
 
 class TextParser():
@@ -71,7 +71,7 @@ class TextParser():
                 self.raw_sentences.append(question)
                 sentence = self.remove_stopwords(question)
                 tokens = sentence.lower().strip().split(' ')
-                clean_tokens = [token for token in tokens if token != ""]
+                clean_tokens = [token for token in tokens if token != "" and token not in string.punctuation]
                 for word in clean_tokens:
                     self.words.append(word)
                 self.fine_pair.append((label, clean_tokens))

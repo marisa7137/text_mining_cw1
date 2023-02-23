@@ -68,13 +68,13 @@ def train(t, train_data, dev_data, num_classes):
 
     lr = 2e-2
     epochs = 10
-    batch_size = 545
+    batch_size = 64
 
     train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True)
     dev_loader = DataLoader(dev_data, batch_size=batch_size, shuffle=True)
 
-    model = Model(pre_train_weight=None, vocab_size=len(t.vocab), embedding_dim=200, from_pre_train=False, freeze=False,
-                    bow=False, hidden_dim_bilstm=500, hidden_layer_size=50, num_of_classes=num_classes)
+    model = Model(pre_train_weight=None, vocab_size=len(t.vocab), embedding_dim=300, from_pre_train=False, freeze=False,
+                    bow=False, hidden_dim_bilstm=256, hidden_layer_size=45, num_of_classes=num_classes)
 
     loss_function = torch.nn.NLLLoss(reduction='mean') # calculate the average negative log loss of a batch
 
