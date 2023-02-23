@@ -74,11 +74,11 @@ def train(t, train_data, dev_data, num_classes, pre_trained_weight=None):
     dev_loader = DataLoader(dev_data, batch_size=batch_size, shuffle=True)
 
     model = Model(pre_train_weight=pre_trained_weight, vocab_size=len(t.glove_vocab), embedding_dim=300, from_pre_train=True, freeze=False,
-                    bow=False, hidden_dim_bilstm=300, hidden_layer_size=50, num_of_classes=num_classes)
+                    bow=False, hidden_dim_bilstm=256, hidden_layer_size=75, num_of_classes=num_classes)
 
     loss_function = torch.nn.NLLLoss(reduction='mean') # calculate the average negative log loss of a batch
 
-    optimizer = optim.RAdam(model.parameters(), lr=lr)
+    optimizer = optim.Adam(model.parameters(), lr=lr)
     scheduler = ExponentialLR(optimizer, gamma=0.9)
 
     # initialize the lists that record the results

@@ -18,10 +18,10 @@ class TextParser():
         self.stopwords_path = config.get("param","stop_words")     # Path for the stopwords collection text
         self.fine_labels_path = '../data/fine_labels.txt'  # Path for the label collection
         self.coarse_labels_path = '../data/coarse_labels.txt'  # Path for the label collection
-        self.glove_embedding_path = '../data/glove.6B.50d.txt'
+        self.glove_embedding_path = '../data/glove.6B.300d.txt'
         self.vocab_path = '../data/vocab.txt'  # Path for the vocabulary collection
-        self.glove_vocab_path = '../data/glove_vocab_50d.txt'
-        self.glove_weight_path = "../data/glove_weight_50d.npy"
+        self.glove_vocab_path = '../data/glove_vocab_300d.txt'
+        self.glove_weight_path = "../data/glove_weight_300d.npy"
         self.stopwords = []  # list of a collection of stopwords
         self.raw_sentences = []
         self.fine_pair = []  # a raw pair is in the format of (label, sentence) where both are strings
