@@ -2317,7 +2317,7 @@ NUM:count How many American soldiers have died for their country to date ?
 ENTY:event What was the name of the U.S. 's first manned space program ?
 HUM:desc Who is Langston Hughes ?
 ENTY:other What were the achievements of Richard Nixon ?
-LOC:other Where does the opera singer Ileana Cotrubas come from ?
+LOC:other Where does the opera singer Isleana Cotrubas come from ?
 DESC:manner How do you do a bibliography with an unknown author ?
 HUM:ind Saddam Hussein was compared to whom by President Bush ?
 NUM:date What year was the NAACP founded ?
