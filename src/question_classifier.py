@@ -6,6 +6,7 @@
     3. Check the settings are as required. e.g. epoch=10
     4. Maybe remove the BILSTM & BOW utilities file to fit the requirement of the structure
     5. Check if there is a README file
+    6. Delete plotting functions
     ** Execution:
     python src/question_classifier.py --train --config "src/bilstm.config" --class_label "fine"
     python src/question_classifier.py --test --config "src/bilstm.config" --class_label "fine"
@@ -71,6 +72,7 @@ if __name__ == '__main__':
         pre_trained_weight = t_train.glove_embedding
 
     else:
+        print("non-pretrain")
         train_data = t_train.get_word_indices(
             args.class_label, dim=20, from_file=True)
         dev_data = t_dev.get_word_indices(
@@ -87,7 +89,7 @@ if __name__ == '__main__':
                     t_train, train_data, dev_data, num_classes=50)
             elif (config.get("param", "model") == "bilstm"):
                 bilstm_train.train(t_train, train_data, dev_data,
-                                   num_classes = 50,
+                                   num_classes=50,
                                    pretrain=args.pretrain,
                                    lr=config.getfloat("param", "lr"),
                                    epoch=config.getint("param", "epoch"),
@@ -105,7 +107,7 @@ if __name__ == '__main__':
                     t_train, train_data, dev_data, num_classes=6)
             elif (config.get("param", "model") == "bilstm"):
                 bilstm_train.train(t_train, train_data, dev_data,
-                                   num_classes = 6,
+                                   num_classes=6,
                                    pretrain=args.pretrain,
                                    lr=config.getfloat("param", "lr"),
                                    epoch=config.getint("param", "epoch"),
@@ -117,18 +119,22 @@ if __name__ == '__main__':
                                    hidden_layer=config.getint(
                                        "param", "hidden_layer"),
                                    pre_trained_weight=pre_trained_weight)
-                
 
     if(args.test):
         if(args.class_label == "fine"):
             if(config.get("param", "model") == "bow"):
                 BagOfWords_test.test(test_data, num_classes=50)
             elif (config.get("param", "model") == "bilstm"):
-                bilstm_test.test(test_data, num_classes=50, model_pth=config.get(
-                    "param", "bilstm_fine_pth"))
+                bilstm_test.test(t_test,test_data, num_classes=50, model_pth=config.get(
+                    "param", "bilstm_fine_pth"),output_pth=config.get("param","fine_output"))
+                
+                #print(t_test.indexed_sentence_pair)
+    
+                
+                
         elif(args.class_label == "coarse"):
             if(config.get("param", "model") == "bow"):
                 BagOfWords_test.test(test_data, num_classes=6)
             elif (config.get("param", "model") == "bilstm"):
-                bilstm_test.test(test_data, num_classes=6, model_pth=config.get(
-                    "param", "bilstm_coase_pth"))
+                bilstm_test.test(t_test,test_data, num_classes=6, model_pth=config.get(
+                    "param", "bilstm_coase_pth"),output_pth=config.get("param","coarse_output"))

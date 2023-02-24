@@ -13,8 +13,9 @@ def test(test_data, num_classes):
     '''
 
     # load the data
+    
     batch_size = 545
-    test_loader = DataLoader(test_data, batch_size=batch_size, shuffle=True)
+    test_loader = DataLoader(test_data, batch_size=batch_size, shuffle=False)
     
 
     # load the model

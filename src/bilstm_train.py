@@ -8,7 +8,7 @@ from bilstm import Model
 import torch.optim as optim
 from sklearn.metrics import accuracy_score, f1_score
 from configparser import ConfigParser
-import matplotlib as plt
+import matplotlib.pyplot as plt
 # import the configure files
 config = ConfigParser()
 config.read("src/bilstm.config")
@@ -16,21 +16,27 @@ config.read("src/bilstm.config")
 
 def plot_history(train_loss, train_accs, train_F1s, dev_loss, dev_accs, dev_F1s, num_classes, num_epoches):
     """
-    Plot the figures of training and developing
-    :param acc: np
-    :param loss: np
-    :param result_dir: path to save the figures
+    Plot the figures of training and developing losses, accuracies, and f1 socres
+    :param list train_loss: the training loss list of each epoch
+    :param list train_accs: the training accuracy list of each epoch
+    :param list train_F1s: the training F1 score list of each epoch 
+    :param list dev_loss: the development loss list of each epoch
+    :param list dev_accs: the development accuracy list of each epoch
+    :param list dev_F1s: the development F1 score list of each epoch 
+    :param int num_classes: the number of classes, 6 or 50
+    :param int num_epoches: the number of epoches
+    :return: None
     """
 
     # generate saving path based on classes
     if num_classes == 6:
-        loss_path = 'plotted_loss_bilstm_coase.png'
-        acc_path = 'plotted_loss_bilstm_coase.png'
-        f1_path = 'plotted_loss_bilstm_coase.png'
+        loss_path = 'src/biLSTM_Utilities/plotted_loss_bilstm_coase.png'
+        acc_path = 'src/biLSTM_Utilities/plotted_acc_bilstm_coase.png'
+        f1_path = 'src/biLSTM_Utilities/plotted_f1_bilstm_coase.png'
     else:
-        loss_path = 'plotted_loss_bilstm_fine.png'
-        acc_path = 'plotted_loss_bilstm_fine.png'
-        f1_path = 'plotted_loss_bilstm_fine.png'
+        loss_path = 'src/biLSTM_Utilities/plotted_loss_bilstm_fine.png'
+        acc_path = 'src/biLSTM_Utilities/plotted_acc_bilstm_fine.png'
+        f1_path = 'src/biLSTM_Utilities/plotted_f1_bilstm_fine.png'
 
     # generate epoch list
     epochs = range(num_epoches)
@@ -41,6 +47,7 @@ def plot_history(train_loss, train_accs, train_F1s, dev_loss, dev_accs, dev_F1s,
     plt.ylabel('loss')
     plt.plot(epochs, train_loss, label='Training Loss')
     plt.plot(epochs, dev_loss, label='Development Loss')
+    plt.legend()
     plt.savefig(loss_path)
     plt.close()
 
@@ -50,6 +57,7 @@ def plot_history(train_loss, train_accs, train_F1s, dev_loss, dev_accs, dev_F1s,
     plt.ylabel('accuracy')
     plt.plot(epochs, train_accs, label='Training Accuracy')
     plt.plot(epochs, dev_accs, label='Development Accuracy')
+    plt.legend()
     plt.savefig(acc_path)
     plt.close()
 
@@ -59,6 +67,7 @@ def plot_history(train_loss, train_accs, train_F1s, dev_loss, dev_accs, dev_F1s,
     plt.ylabel('accuracy')
     plt.plot(epochs, train_F1s, label='Training macro F1')
     plt.plot(epochs, dev_F1s, label='Development macro F1')
+    plt.legend()
     plt.savefig(f1_path)
     plt.close()
 
@@ -202,8 +211,6 @@ def train(t, train_data, dev_data, num_classes, pretrain, lr, epoch, batch, embe
         # update optimiser's scheduler
         scheduler.step()
 
-    # plot_history(accList, lossList "./")
-
     # save the model
     if num_classes == 6:
         # save training records
@@ -218,8 +225,11 @@ def train(t, train_data, dev_data, num_classes, pretrain, lr, epoch, batch, embe
 
         # save the model
         torch.save(model, config.get("param", "bilstm_coase_pth"))
-
-        print("successfully saved the coarse model!")
+        
+        # plot and save
+        plot_history(train_losses, train_accs, train_F1s, dev_losses, dev_accs, dev_F1s, num_classes, epoch)
+        
+        print("successfully saved everything!")
     else:
         # save training records
         np.savetxt(config.get("param", "loss_bilstm_fine"), train_losses)
@@ -233,4 +243,8 @@ def train(t, train_data, dev_data, num_classes, pretrain, lr, epoch, batch, embe
 
         # save the model
         torch.save(model, config.get("param", "bilstm_fine_pth"))
-        print("successfully saved the fine model!")
+        
+        # plot and save
+        plot_history(train_losses, train_accs, train_F1s, dev_losses, dev_accs, dev_F1s, num_classes)
+        
+        print("successfully saved everything!")
