@@ -16,9 +16,10 @@ def test(test_data, num_classes, model_pth):
     # load the data
     batch_size = 500
     test_loader = DataLoader(test_data, batch_size=batch_size, shuffle=True)
+    
 
     # load the model
-    if num_classes == 6:
+    if num_classes==6:
         model = torch.load(model_pth)
     else:
         model = torch.load(model_pth)
@@ -27,8 +28,7 @@ def test(test_data, num_classes, model_pth):
     model = model.eval()
 
     # define the loss function
-    # calculate the average negative log loss of a batch
-    loss_function = torch.nn.NLLLoss(reduction='mean')
+    loss_function = torch.nn.NLLLoss(reduction='mean') # calculate the average negative log loss of a batch
 
     # initialization
     test_losses, test_accs, test_F1s = [], [], []
@@ -36,7 +36,7 @@ def test(test_data, num_classes, model_pth):
     # turn off gradients computation
     with torch.no_grad():
         for test_labels, test_features in iter(test_loader):
-            test_labels = test_labels.type(torch.LongTensor)  # shape (545,)
+            test_labels = test_labels.type(torch.LongTensor) # shape (545,)
 
             # to ensure the word embedding work correctly
             if len(test_labels) != batch_size:
@@ -51,15 +51,13 @@ def test(test_data, num_classes, model_pth):
             test_losses.append(loss)
 
             # get the index of the class with the maximum likelihood
-            output_idx = torch.argmax(
-                output, dim=1).cpu().data.numpy()  # shape: (1,)
+            output_idx = torch.argmax(output, dim=1).cpu().data.numpy()  # shape: (1,)
             print(test_labels.shape)
-
+            
             # calculate the accuracy and F1 score
             acc = accuracy_score(output_idx, test_labels)
             f1 = f1_score(output_idx, test_labels, average="micro")
             test_accs.append(acc)
             test_F1s.append(f1)
 
-    print(
-        "Test", f'loss: {np.mean(test_losses)}, accuracy: {np.mean(test_accs)}, f1_score: {np.mean(test_F1s)}')
+    print("Test", f'loss: {np.mean(test_losses)}, accuracy: {np.mean(test_accs)}, f1_score: {np.mean(test_F1s)}')

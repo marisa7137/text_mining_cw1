@@ -25,6 +25,7 @@ from text_parser import TextParser
 from configparser import ConfigParser
 import BagOfWords_test
 import BagofWords_train
+from pathlib import Path
 # Added the random seed generator
 
 
@@ -42,26 +43,38 @@ if __name__ == '__main__':
                         help='Testing mode - needs a model to load')
     parser.add_argument('--class_label', type=str, required=True,
                         help='different class fine', default="fine")
+    parser.add_argument('--pretrain', type=bool, required=False,
+                        help='Wether or not using the pretrain', default=False)
 
     args = parser.parse_args()
     config.read(args.config)
 
     # training data
     t_train = TextParser(pathfile=config.get("param", "path_train"), tofile=False, stopwords_pth=config.get("param", "stop_words"), fine_label_pth=config.get(
-        "param", "fine_label"), coarse_label_pth=config.get("param", "coarse_label"), vocab_pth=config.get("param", "vocab"))
-    train_data = t_train.get_word_indices(
-        args.class_label, dim=20, from_file=True)
+        "param", "fine_label"), coarse_label_pth=config.get("param", "coarse_label"), vocab_pth=config.get("param", "vocab"), glove_vocab_pth=config.get(
+            "param", "glove_vocab_path"), glove_weight_pth=config.get("param", "glove_weight_path"))
     # developemnt data
     t_dev = TextParser(pathfile=config.get("param", "path_dev"), tofile=False, stopwords_pth=config.get("param", "stop_words"), fine_label_pth=config.get(
-        "param", "fine_label"), coarse_label_pth=config.get("param", "coarse_label"), vocab_pth=config.get("param", "vocab"))
-    # development data (validation)
-    dev_data = t_dev.get_word_indices(args.class_label, dim=20, from_file=True)
-
+        "param", "fine_label"), coarse_label_pth=config.get("param", "coarse_label"), vocab_pth=config.get("param", "vocab"), glove_vocab_pth=config.get(
+            "param", "glove_vocab_path"), glove_weight_pth=config.get("param", "glove_weight_path"))
     # test data
     t_test = TextParser(pathfile=config.get("param", "path_test"), tofile=False, stopwords_pth=config.get("param", "stop_words"), fine_label_pth=config.get(
-        "param", "fine_label"), coarse_label_pth=config.get("param", "coarse_label"), vocab_pth=config.get("param", "vocab"))
-    test_data = t_test.get_word_indices(
-        args.class_label, dim=20, from_file=True)
+        "param", "fine_label"), coarse_label_pth=config.get("param", "coarse_label"), vocab_pth=config.get("param", "vocab"), glove_vocab_pth=config.get(
+            "param", "glove_vocab_path"), glove_weight_pth=config.get("param", "glove_weight_path"))
+
+    if (args.pretrain):
+        train_data = t_train.get_word_indices_from_glove(
+            args.class_label, dim=20)
+        dev_data = t_dev.get_word_indices_from_glove(args.class_label, dim=20)
+        test_data = t_test.get_word_indices_from_glove(
+            args.class_label, dim=20)
+    else:
+        train_data = t_train.get_word_indices(
+            args.class_label, dim=20, from_file=True)
+        dev_data = t_dev.get_word_indices(
+            args.class_label, dim=20, from_file=True)
+        test_data = t_test.get_word_indices(
+            args.class_label, dim=20, from_file=True)
 
     if(args.train):
         if(args.class_label == "fine"):
@@ -71,14 +84,14 @@ if __name__ == '__main__':
                     t_train, train_data, dev_data, num_classes=50)
             elif (config.get("param", "model") == "bilstm"):
                 bilstm_train.train(t_train, train_data,
-                                   dev_data, num_classes=50)
+                                   dev_data, num_classes=50,pretrain=args.pretrain, pre_trained_weight=t_train.glove_embedding)
         elif(args.class_label == "coarse"):
             if(config.get("param", "model") == "bow"):
                 BagofWords_train.train(
                     t_train, train_data, dev_data, num_classes=6)
             elif (config.get("param", "model") == "bilstm"):
                 bilstm_train.train(t_train, train_data,
-                                   dev_data, num_classes=6)
+                                   dev_data, num_classes=6,pretrain=args.pretrain, pre_trained_weight=t_train.glove_embedding)
 
     if(args.test):
         if(args.class_label == "fine"):

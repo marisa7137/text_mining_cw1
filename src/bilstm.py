@@ -19,38 +19,33 @@ class Model(nn.Module):
     :param int num_of_classes: the number of classes, 6 or 50
     :return: a BiLSTM model with a classifier
     '''
+
     def __init__(self, pre_train_weight, vocab_size, embedding_dim, from_pre_train: bool, freeze: bool, bow: bool, hidden_dim_bilstm, hidden_layer_size, num_of_classes):
         super().__init__()
-
-        self.hidden_dim_bilstm = hidden_dim_bilstm
-        self.word_embedding = Word_Embedding(pre_train_weight=pre_train_weight, vocab_size=vocab_size, embedding_dim=embedding_dim, from_pre_train=from_pre_train, freeze=freeze)
-        # self.sen_rep = Sentence_Rep(bow=bow, embedding_dim=embedding_dim, hidden_dim_bilstm=hidden_dim_bilstm)
-
-        self.bilstm = nn.LSTM(input_size=embedding_dim, hidden_size=hidden_dim_bilstm, bidirectional=True, batch_first=True)
-
-        self.fc1 = nn.Linear(in_features=hidden_dim_bilstm * 2, out_features=hidden_layer_size)
-
+        self.word_embedding = Word_Embedding(pre_train_weight=pre_train_weight, vocab_size=vocab_size,
+                                             embedding_dim=embedding_dim, from_pre_train=from_pre_train, freeze=freeze)
+        self.sen_rep = Sentence_Rep(
+            bow=bow, embedding_dim=embedding_dim, hidden_dim_bilstm=hidden_dim_bilstm)
+        self.bn = nn.BatchNorm1d(2*hidden_dim_bilstm)
+        self.fc1 = nn.Linear(in_features=2*hidden_dim_bilstm,
+                             out_features=hidden_layer_size)
         self.af1 = nn.LeakyReLU(0.1)
-
-        #self.af1 = nn.TANH()
-
-        self.fc2 = nn.Linear(in_features=hidden_layer_size, out_features=num_of_classes)
-        self.af2 = nn.LogSoftmax(dim=0)
-
+        self.fc2 = nn.Linear(in_features=hidden_layer_size,
+                             out_features=hidden_layer_size)
+        self.af2 = nn.LeakyReLU(0.1)
+        self.fc3 = nn.Linear(in_features=hidden_layer_size,
+                             out_features=num_of_classes)
+        self.af3 = nn.LogSoftmax(dim=0)
 
     def forward(self, indexed_sentence):
         out = self.word_embedding(indexed_sentence)
-
-        # out = self.sen_rep(out)
-        # bilstm
-        bilstm_out, _ = self.bilstm(out) # torch.Size([545, 20, 512])
-        back = bilstm_out[:, 0, self.hidden_dim_bilstm:] # torch.Size([545, 256])
-        forward = bilstm_out[:, -1, :self.hidden_dim_bilstm] # torch.Size([545, 256])
-        #
-        out = torch.cat((forward, back), dim=1) # torch.Size([545, 512])
-
+        # print(out.shape)
+        out = self.sen_rep(out)
+        out = self.bn(out)
         out = self.fc1(out)
         out = self.af1(out)
         out = self.fc2(out)
         out = self.af2(out)
+        out = self.fc3(out)
+        out = self.af3(out)
         return out
