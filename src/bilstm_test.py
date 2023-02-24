@@ -56,7 +56,7 @@ def test(test_data, num_classes, model_pth):
             
             # calculate the accuracy and F1 score
             acc = accuracy_score(output_idx, test_labels)
-            f1 = f1_score(output_idx, test_labels, average="micro")
+            f1 = f1_score(output_idx, test_labels, average="macro")
             test_accs.append(acc)
             test_F1s.append(f1)
 

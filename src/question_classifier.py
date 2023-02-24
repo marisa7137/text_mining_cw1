@@ -68,6 +68,8 @@ if __name__ == '__main__':
         dev_data = t_dev.get_word_indices_from_glove(args.class_label, dim=20)
         test_data = t_test.get_word_indices_from_glove(
             args.class_label, dim=20)
+        pre_trained_weight = t_train.glove_embedding
+
     else:
         train_data = t_train.get_word_indices(
             args.class_label, dim=20, from_file=True)
@@ -75,6 +77,7 @@ if __name__ == '__main__':
             args.class_label, dim=20, from_file=True)
         test_data = t_test.get_word_indices(
             args.class_label, dim=20, from_file=True)
+        pre_trained_weight = None
 
     if(args.train):
         if(args.class_label == "fine"):
@@ -83,15 +86,38 @@ if __name__ == '__main__':
                 BagofWords_train.train(
                     t_train, train_data, dev_data, num_classes=50)
             elif (config.get("param", "model") == "bilstm"):
-                bilstm_train.train(t_train, train_data,
-                                   dev_data, num_classes=50,pretrain=args.pretrain, pre_trained_weight=t_train.glove_embedding)
+                bilstm_train.train(t_train, train_data, dev_data,
+                                   num_classes = 50,
+                                   pretrain=args.pretrain,
+                                   lr=config.getfloat("param", "lr"),
+                                   epoch=config.getint("param", "epoch"),
+                                   embedding_dim=config.getint(
+                                       "param", "embedding_dim"),
+                                   batch=config.getint("param", "batch"),
+                                   hidden_dim=config.getint(
+                                       "param", "hidden_dim"),
+                                   hidden_layer=config.getint(
+                                       "param", "hidden_layer"),
+                                   pre_trained_weight=pre_trained_weight)
         elif(args.class_label == "coarse"):
             if(config.get("param", "model") == "bow"):
                 BagofWords_train.train(
                     t_train, train_data, dev_data, num_classes=6)
             elif (config.get("param", "model") == "bilstm"):
-                bilstm_train.train(t_train, train_data,
-                                   dev_data, num_classes=6,pretrain=args.pretrain, pre_trained_weight=t_train.glove_embedding)
+                bilstm_train.train(t_train, train_data, dev_data,
+                                   num_classes = 6,
+                                   pretrain=args.pretrain,
+                                   lr=config.getfloat("param", "lr"),
+                                   epoch=config.getint("param", "epoch"),
+                                   embedding_dim=config.getint(
+                                       "param", "embedding_dim"),
+                                   batch=config.getint("param", "batch"),
+                                   hidden_dim=config.getint(
+                                       "param", "hidden_dim"),
+                                   hidden_layer=config.getint(
+                                       "param", "hidden_layer"),
+                                   pre_trained_weight=pre_trained_weight)
+                
 
     if(args.test):
         if(args.class_label == "fine"):
