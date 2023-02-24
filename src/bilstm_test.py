@@ -10,15 +10,21 @@ def test_output(t, predValue_idx, num_classes, output_pth):
         raw_sentence = t.raw_sentences
         groundTruth = t.coarse_pair
         label_mapping = t.coarse_labels
-    
+
     else:
         raw_sentence = t.raw_sentences
         groundTruth = t.fine_pair
         label_mapping = t.fine_labels
 
     with open(output_pth, "w") as f:
-        lines = [
-            'Groud Truth Label               Predict Label                             Question \n']
+        column_width = 20
+        # Create table header
+        table_header = "{:<{}} {:<{}} {:<{}}\n".format(
+            "Groud Truth Label", column_width, "Predict Label ", column_width, "Question", column_width)
+        # lines = [
+        #     'Groud Truth Label               Predict Label                             Question \n']
+        # Create table rows using a for loop
+        table_rows = ""
 
         for idx in range(0, len(predValue_idx)):
             raw_sentence_single = raw_sentence[idx]
@@ -28,14 +34,13 @@ def test_output(t, predValue_idx, num_classes, output_pth):
 
             # mapping: idex -> label
             predLabel_single = label_mapping[predValue_idx_single]
-
-            line = [groundTruth_single, "              ", predLabel_single, "              ", raw_sentence_single]
-            s = '       '.join(line)
-            s += '\n'
-            lines.append(s)
-        f.writelines(lines)
+            table_row = "{:<{}} {:<{}} {:<{}}\n".format(
+                groundTruth_single, column_width, predLabel_single, column_width, raw_sentence_single, column_width)
+            table_rows += table_row
+            table = table_header + table_rows
 
     
+        f.writelines(table)
 
 
 def test(t, test_data, num_classes, model_pth, output_pth):

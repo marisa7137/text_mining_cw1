@@ -26,6 +26,7 @@ Some notes:
         lr = 2e-2 + weight_decay=1e-5 + dropout(p=0.2) -> dev acc = 0.638
         lr = 7e-3 + weight_decay=1e-5 + dropout(p=0.1) -> dev acc = 0.675
         Current highest dev acc = 0.77
+6. Did not try data augumentation due to NLP (word sequence...)
 
 '''
 import torch
