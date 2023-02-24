@@ -9,6 +9,7 @@
     ** Execution:
     python src/question_classifier.py --train --config "src/bilstm.config" --class_label "fine"
     python src/question_classifier.py --test --config "src/bilstm.config" --class_label "fine"
+    
 '''
 
 import argparse
@@ -63,6 +64,8 @@ if __name__ == '__main__':
             "param", "glove_vocab_path"), glove_weight_pth=config.get("param", "glove_weight_path"))
 
     if (args.pretrain):
+        print(args.pretrain)
+        print("zhixing pretrain")
         train_data = t_train.get_word_indices_from_glove(
             args.class_label, dim=20)
         dev_data = t_dev.get_word_indices_from_glove(args.class_label, dim=20)
@@ -71,6 +74,7 @@ if __name__ == '__main__':
         pre_trained_weight = t_train.glove_embedding
 
     else:
+        print("no pretrain")
         train_data = t_train.get_word_indices(
             args.class_label, dim=20, from_file=True)
         dev_data = t_dev.get_word_indices(
@@ -83,8 +87,19 @@ if __name__ == '__main__':
         if(args.class_label == "fine"):
             # do the train function
             if(config.get("param", "model") == "bow"):
-                BagofWords_train.train(
-                    t_train, train_data, dev_data, num_classes=50)
+                BagofWords_train.train(t_train, train_data, dev_data, 
+                                       num_classes=50,
+                                       pretrain=args.pretrain,
+                                       lr=config.getfloat("param", "lr"),
+                                       epoch=config.getint("param", "epoch"),
+                                       embedding_dim=config.getint(
+                                            "param", "embedding_dim"),
+                                       batch=config.getint("param", "batch"),
+                                       hidden_dim=config.getint(
+                                            "param", "hidden_dim"),
+                                       hidden_layer=config.getint(
+                                            "param", "hidden_layer"),
+                                        pre_trained_weight=pre_trained_weight)
             elif (config.get("param", "model") == "bilstm"):
                 bilstm_train.train(t_train, train_data, dev_data,
                                    num_classes = 50,
@@ -101,8 +116,19 @@ if __name__ == '__main__':
                                    pre_trained_weight=pre_trained_weight)
         elif(args.class_label == "coarse"):
             if(config.get("param", "model") == "bow"):
-                BagofWords_train.train(
-                    t_train, train_data, dev_data, num_classes=6)
+                BagofWords_train.train(t_train, train_data, dev_data, 
+                                       num_classes=6,
+                                       pretrain=args.pretrain,
+                                       lr=config.getfloat("param", "lr"),
+                                       epoch=config.getint("param", "epoch"),
+                                       embedding_dim=config.getint(
+                                            "param", "embedding_dim"),
+                                       batch=config.getint("param", "batch"),
+                                       hidden_dim=config.getint(
+                                            "param", "hidden_dim"),
+                                       hidden_layer=config.getint(
+                                            "param", "hidden_layer"),
+                                       pre_trained_weight=pre_trained_weight)
             elif (config.get("param", "model") == "bilstm"):
                 bilstm_train.train(t_train, train_data, dev_data,
                                    num_classes = 6,
@@ -122,13 +148,15 @@ if __name__ == '__main__':
     if(args.test):
         if(args.class_label == "fine"):
             if(config.get("param", "model") == "bow"):
-                BagOfWords_test.test(test_data, num_classes=50)
+                BagOfWords_test.test(test_data, num_classes=50, model_pth=config.get(
+                    "param","bow_fine_pth"))
             elif (config.get("param", "model") == "bilstm"):
                 bilstm_test.test(test_data, num_classes=50, model_pth=config.get(
                     "param", "bilstm_fine_pth"))
         elif(args.class_label == "coarse"):
             if(config.get("param", "model") == "bow"):
-                BagOfWords_test.test(test_data, num_classes=6)
+                BagOfWords_test.test(test_data, num_classes=6, model_pth=config.get(
+                    "param","bow_coase_pth"))
             elif (config.get("param", "model") == "bilstm"):
                 bilstm_test.test(test_data, num_classes=6, model_pth=config.get(
                     "param", "bilstm_coase_pth"))

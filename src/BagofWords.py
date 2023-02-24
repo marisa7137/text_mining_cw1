@@ -10,28 +10,32 @@ class Model(torch.nn.Module):
         self.word_embedding = Word_Embedding(pre_train_weight=pre_train_weight, vocab_size=vocab_size, embedding_dim=embedding_dim, from_pre_train=from_pre_train, freeze=freeze)
         self.sen_rep = Sentence_Rep(bow=bow, embedding_dim=embedding_dim, hidden_dim_bilstm=hidden_dim_bilstm)
 
-        self.fc1 = nn.Linear(in_features=embedding_dim, out_features=hidden_layer_size)
-        self.af1 = nn.LeakyReLU(0.1)
-        self.fc2 = nn.Linear(in_features=hidden_layer_size, out_features=num_of_classes)
-        self.af2 = nn.LogSoftmax(dim=0)
+        # self.fc1 = nn.Linear(in_features=embedding_dim, out_features=hidden_layer_size)
+        # self.af1 = nn.LeakyReLU(0.1)
+        # self.fc2 = nn.Linear(in_features=hidden_layer_size, out_features=num_of_classes)
+        # self.af2 = nn.LogSoftmax(dim=0)
+
+        self.fc3 = nn.Linear(in_features=embedding_dim, out_features=num_of_classes)
+        self.af3 = nn.LogSoftmax(dim=0)
+
+
+        #self.norm = nn.BatchNorm1d(2*hidden_dim_bilstm) # BatchNorm2d only accepts 4D inputs while BatchNorm1d accepts 2D or 3D inputs
+        self.dropout = nn.Dropout(p=0.2) # dropout
        
 
 
     def forward(self, indexed_sentence):
         out = self.word_embedding(indexed_sentence)
-        #print(out)
-        #print(out.shape) #shape:torch.Size([545, 18, 30])
+        print("word_embedding out shape:",out.shape)
         out = self.sen_rep(out)
-        #print("sen_rep:",out.shape)  #([545, 30])
-        #print("sen_rep:",out)
-        out = self.fc1(out)
-        #print("fc1 size",out.shape) #[545, 30])
-        out = self.af1(out)
-        #print("af1 size",out.shape) #([545, 30])
-        out = self.fc2(out)
-        #print("fc2 size",out.shape) #([545, 50])
-        out = self.af2(out)
-        #print("af2 size",out.shape) #([545, 50])
-        #print(out)
-        #print("torch mean:",torch.mean(out,dim=1).shape) #dim=1说明每一行求平均
+        print("sen_rep out shape:",out.shape)
+        # out = self.fc1(out)
+        # out = self.af1(out)
+        # out = self.fc2(out)
+        # out = self.af2(out)
+
+        out = self.dropout(out)
+        out = self.fc3(out)
+        out = self.af3(out)
+
         return out
