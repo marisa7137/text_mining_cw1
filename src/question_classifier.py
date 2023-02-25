@@ -127,8 +127,6 @@ if __name__ == '__main__':
             elif (config.get("param", "model") == "bilstm"):
                 bilstm_test.test(t_test,test_data, num_classes=50, model_pth=config.get(
                     "param", "bilstm_fine_pth"),output_pth=config.get("param","fine_output"))
-                
-                #print(t_test.indexed_sentence_pair)
     
                 
                 

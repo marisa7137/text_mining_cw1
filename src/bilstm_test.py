@@ -38,8 +38,6 @@ def test_output(t, predValue_idx, num_classes, output_pth):
                 groundTruth_single, column_width, predLabel_single, column_width, raw_sentence_single, column_width)
             table_rows += table_row
             table = table_header + table_rows
-
-    
         f.writelines(table)
 
 
