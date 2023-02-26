@@ -56,13 +56,13 @@ class TextParser():
     def load_raw_text(self):
         """
         Function:
-        load the train_5500.label file and process it into a raw pair format after lowering and removing the unneccary
+            load the data file and process it into a raw pair format after tokenlise and lowering and removing the unneccary
         punctions
         Args:
-        self (text parser itself)
+            self (text parser itself)
         Returns:
-        fine_pair: A pair of label and clean tokens format from the raw text_file
-        coarse_pair: A pair of coarse label and clean tokens format from the raw text_file
+            fine_pair: A pair of label and clean tokens format from the raw text_file
+            coarse_pair: A pair of coarse label and clean tokens format from the raw text_file
         """
 
         csv.register_dialect('skip_space', skipinitialspace=True)
@@ -86,11 +86,11 @@ class TextParser():
     def remove_stopwords(self, sentence):
         """
         Function:
-        Remove the stopwords from the given sentence
+            Remove the stopwords from the given sentence
         Args:
-        self (text parser itself), sentence (the given sentence)
+            self (text parser itself), sentence (the given sentence)
         Returns:
-        result: a list contain the sentence after removing the stop words.
+            result: a list contain the sentence after removing the stop words.
 
         """
         words = sentence.split()
