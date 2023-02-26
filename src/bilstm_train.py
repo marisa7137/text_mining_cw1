@@ -111,7 +111,7 @@ def development(batch_size, dev_loader, model, loss_function, dev_losses, dev_ac
 
             # calculate accuracy and f1
             acc = accuracy_score(output_idx, dev_labels)
-            f1 = f1_score(output_idx, dev_labels, average="micro")
+            f1 = f1_score(output_idx, dev_labels, average="macro")
             dev_accs.append(acc)
             dev_F1s.append(f1)
 
@@ -161,11 +161,11 @@ def train(t, train_data, dev_data, num_classes, pretrain, lr, epoch, batch, embe
             # shape (batch_size,) <==> (545,)
             train_labels = train_labels.type(torch.LongTensor)
 
-            # to ensure the word embedding work correctly
-            if len(train_labels) != batch:
-                break
-
-            # prediction
+            # # to ensure the word embedding work correctly
+            # if len(train_labels) != batch:
+            #     break
+            #
+            # # prediction
             # shape (batch_size, class_num) <==> (545, 50)
             output = model(train_features)
 
@@ -245,6 +245,6 @@ def train(t, train_data, dev_data, num_classes, pretrain, lr, epoch, batch, embe
         torch.save(model, config.get("param", "bilstm_fine_pth"))
         
         # plot and save
-        plot_history(train_losses, train_accs, train_F1s, dev_losses, dev_accs, dev_F1s, num_classes)
+        plot_history(train_losses, train_accs, train_F1s, dev_losses, dev_accs, dev_F1s, num_classes, epoch)
         
         print("successfully saved everything!")
