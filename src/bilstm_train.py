@@ -11,7 +11,7 @@ from configparser import ConfigParser
 import matplotlib.pyplot as plt
 # import the configure files
 config = ConfigParser()
-config.read("src/bilstm.config")
+config.read("../data/bilstm.config")
 
 
 def plot_history(train_loss, train_accs, train_F1s, dev_loss, dev_accs, dev_F1s, num_classes, num_epoches):
@@ -30,13 +30,13 @@ def plot_history(train_loss, train_accs, train_F1s, dev_loss, dev_accs, dev_F1s,
 
     # generate saving path based on classes
     if num_classes == 6:
-        loss_path = 'src/biLSTM_Utilities/plotted_loss_bilstm_coase.png'
-        acc_path = 'src/biLSTM_Utilities/plotted_acc_bilstm_coase.png'
-        f1_path = 'src/biLSTM_Utilities/plotted_f1_bilstm_coase.png'
+        loss_path = 'biLSTM_Utilities/plotted_loss_bilstm_coase.png'
+        acc_path = 'biLSTM_Utilities/plotted_acc_bilstm_coase.png'
+        f1_path = 'biLSTM_Utilities/plotted_f1_bilstm_coase.png'
     else:
-        loss_path = 'src/biLSTM_Utilities/plotted_loss_bilstm_fine.png'
-        acc_path = 'src/biLSTM_Utilities/plotted_acc_bilstm_fine.png'
-        f1_path = 'src/biLSTM_Utilities/plotted_f1_bilstm_fine.png'
+        loss_path = 'biLSTM_Utilities/plotted_loss_bilstm_fine.png'
+        acc_path = 'biLSTM_Utilities/plotted_acc_bilstm_fine.png'
+        f1_path = 'biLSTM_Utilities/plotted_f1_bilstm_fine.png'
 
     # generate epoch list
     epochs = range(num_epoches)
