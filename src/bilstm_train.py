@@ -71,8 +71,6 @@ def plot_history(train_loss, train_accs, train_F1s, dev_loss, dev_accs, dev_F1s,
     plt.savefig(f1_path)
     plt.close()
 
-    # plt.plot(loss, marker='.')
-
 
 def development(batch_size, dev_loader, model, loss_function, dev_losses, dev_accs, dev_F1s):
     '''
@@ -118,7 +116,7 @@ def development(batch_size, dev_loader, model, loss_function, dev_losses, dev_ac
     return dev_losses, dev_accs, dev_F1s
 
 
-def train(t, train_data, dev_data, num_classes, pretrain, lr, epoch, batch, embedding_dim, hidden_dim, hidden_layer, pre_trained_weight=None):
+def train(t, train_data, dev_data, num_classes, pretrain, lr, epoch, batch, embedding_dim, hidden_dim, hidden_layer,freeze,pre_trained_weight=None):
     '''
     The main function for training
     :param TextParser t: test parser
@@ -131,10 +129,10 @@ def train(t, train_data, dev_data, num_classes, pretrain, lr, epoch, batch, embe
     train_loader = DataLoader(train_data, batch_size=batch, shuffle=True)
     dev_loader = DataLoader(dev_data, batch_size=batch, shuffle=True)
     if(pretrain):
-        model = Model(pre_train_weight=pre_trained_weight, vocab_size=len(t.glove_vocab), embedding_dim=embedding_dim, from_pre_train=True, freeze=False,
+        model = Model(pre_train_weight=pre_trained_weight, vocab_size=len(t.glove_vocab), embedding_dim=embedding_dim, from_pre_train=True, freeze=freeze,
                       bow=False, hidden_dim_bilstm=hidden_dim, hidden_layer_size=hidden_layer, num_of_classes=num_classes)
     else:
-        model = Model(pre_train_weight=None, vocab_size=len(t.vocab), embedding_dim=embedding_dim, from_pre_train=False, freeze=False,
+        model = Model(pre_train_weight=None, vocab_size=len(t.vocab), embedding_dim=embedding_dim, from_pre_train=False, freeze=freeze,
                       bow=False, hidden_dim_bilstm=hidden_dim, hidden_layer_size=hidden_layer, num_of_classes=num_classes)
 
     # calculate the average negative log loss of a batch
@@ -197,7 +195,7 @@ def train(t, train_data, dev_data, num_classes, pretrain, lr, epoch, batch, embe
                 dev_losses, dev_accs, dev_F1s = development(
                     batch, dev_loader, model, loss_function, dev_losses, dev_accs, dev_F1s)
                 print(
-                    "Dev batch", f'epoch: {e}, loss: {dev_losses[-1]}, accuracy: {dev_accs[-1]}, f1 Score: {dev_F1s[-1]}')
+                    "Dev batch", f'epoch: {e+1}, loss: {dev_losses[-1]}, accuracy: {dev_accs[-1]}, f1 Score: {dev_F1s[-1]}')
 
         # record the data for each epoch
         train_losses.append(loss_batch/cnt)  # average loss of the batch
@@ -206,7 +204,7 @@ def train(t, train_data, dev_data, num_classes, pretrain, lr, epoch, batch, embe
 
         # print for each epoch
         print("Train epoch",
-              f'epoch: {e}, loss: {loss_batch/cnt}, accuracy: {acc_batch/cnt}, f1 Score: {f1_batch/cnt}, lr: {adam_lr}')
+              f'epoch: {e+1}, loss: {loss_batch/cnt}, accuracy: {acc_batch/cnt}, f1 Score: {f1_batch/cnt}, lr: {adam_lr}')
 
         # update optimiser's scheduler
         scheduler.step()

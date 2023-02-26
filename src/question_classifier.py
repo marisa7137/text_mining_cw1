@@ -55,30 +55,28 @@ if __name__ == '__main__':
         "param", "fine_label"), coarse_label_pth=config.get("param", "coarse_label"), vocab_pth=config.get("param", "vocab"), glove_vocab_pth=config.get(
             "param", "glove_vocab_path"), glove_weight_pth=config.get("param", "glove_weight_path"))
 
-    if (config.getboolean("param","pretrain")):
+    if (config.getboolean("param", "pretrain")):
         print("Pretrain Option: On")
         train_data = t_train.get_word_indices_from_glove(
-            config.get("param","class_label"), dim=20)
-        dev_data = t_dev.get_word_indices_from_glove(config.get("param","class_label"), dim=20)
+            config.get("param", "class_label"), dim=20)
+        dev_data = t_dev.get_word_indices_from_glove(
+            config.get("param", "class_label"), dim=20)
         test_data = t_test.get_word_indices_from_glove(
-            config.get("param","class_label"), dim=20)
+            config.get("param", "class_label"), dim=20)
         pre_trained_weight = t_train.glove_embedding
-        pre_train = True
-
     else:
         print("Pretrain Option: Off")
         train_data = t_train.get_word_indices(
-            config.get("param","class_label"), dim=20, from_file=True)
+            config.get("param", "class_label"), dim=20, from_file=True)
         dev_data = t_dev.get_word_indices(
-            config.get("param","class_label"), dim=20, from_file=True)
+            config.get("param", "class_label"), dim=20, from_file=True)
         test_data = t_test.get_word_indices(
-            config.get("param","class_label"), dim=20, from_file=True)
+            config.get("param", "class_label"), dim=20, from_file=True)
         pre_trained_weight = None
-        pre_train = False
 
     if(args.train):
         print("Mode: Training")
-        if(config.get("param","class_label") == "fine"):
+        if(config.get("param", "class_label") == "fine"):
             print("Class Label: fine")
             # do the train function
             if(config.get("param", "model") == "bow"):
@@ -86,20 +84,23 @@ if __name__ == '__main__':
                     t_train, train_data, dev_data, num_classes=50)
             elif (config.get("param", "model") == "bilstm"):
                 print("Model: bilstm")
+                print("----------------------------------------")
                 bilstm_train.train(t_train, train_data, dev_data,
                                    num_classes=50,
-                                   pretrain=config.getboolean("param","pretrain"),
+                                   pretrain=config.getboolean(
+                                       "param", "pretrain"),
                                    lr=config.getfloat("param", "lr"),
                                    epoch=config.getint("param", "epoch"),
                                    embedding_dim=config.getint(
                                        "param", "embedding_dim"),
                                    batch=config.getint("param", "batch"),
+                                   freeze=config.getboolean("param","freeze"),
                                    hidden_dim=config.getint(
                                        "param", "hidden_dim"),
                                    hidden_layer=config.getint(
                                        "param", "hidden_layer"),
                                    pre_trained_weight=pre_trained_weight)
-        elif(config.get("param","class_label") == "coarse"):
+        elif(config.get("param", "class_label") == "coarse"):
             print("Class Label: coarse")
             if(config.get("param", "model") == "bow"):
                 BagofWords_train.train(
@@ -108,12 +109,14 @@ if __name__ == '__main__':
                 print("Model: bilstm")
                 bilstm_train.train(t_train, train_data, dev_data,
                                    num_classes=6,
-                                   pretrain=config.getboolean("param","pretrain"),
+                                   pretrain=config.getboolean(
+                                       "param", "pretrain"),
                                    lr=config.getfloat("param", "lr"),
                                    epoch=config.getint("param", "epoch"),
                                    embedding_dim=config.getint(
                                        "param", "embedding_dim"),
                                    batch=config.getint("param", "batch"),
+                                   freeze=config.getboolean("param","freeze"),
                                    hidden_dim=config.getint(
                                        "param", "hidden_dim"),
                                    hidden_layer=config.getint(
@@ -122,7 +125,7 @@ if __name__ == '__main__':
 
     if(args.test):
         print("Mode: Testing")
-        if(config.get("param","class_label") == "fine"):
+        if(config.get("param", "class_label") == "fine"):
             print("Class Label: fine")
             if(config.get("param", "model") == "bow"):
                 BagOfWords_test.test(test_data, num_classes=50)
@@ -130,11 +133,11 @@ if __name__ == '__main__':
                 bilstm_test.test(t_test, test_data, num_classes=50, model_pth=config.get(
                     "param", "bilstm_fine_pth"), output_pth=config.get("param", "fine_output"))
 
-        elif(config.get("param","class_label") == "coarse"):
+        elif(config.get("param", "class_label") == "coarse"):
             print("Class Label: coarse")
             if(config.get("param", "model") == "bow"):
                 BagOfWords_test.test(test_data, num_classes=6)
             elif (config.get("param", "model") == "bilstm"):
+                print("Model: bilstm")
                 bilstm_test.test(t_test, test_data, num_classes=6, model_pth=config.get(
                     "param", "bilstm_coase_pth"), output_pth=config.get("param", "coarse_output"))
-
