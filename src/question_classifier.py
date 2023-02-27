@@ -1,6 +1,6 @@
 from pathlib import Path
-import BagofWords_train
-import BagOfWords_test
+import bow_train
+import bow_test
 import bilstm_test
 import bilstm_train
 from bilstm import Model
@@ -55,6 +55,7 @@ if __name__ == '__main__':
         "param", "fine_label"), coarse_label_pth=config.get("param", "coarse_label"), vocab_pth=config.get("param", "vocab"), glove_vocab_pth=config.get(
             "param", "glove_vocab_path"), glove_weight_pth=config.get("param", "glove_weight_path"))
 
+
     if (config.getboolean("param", "pretrain")):
         print("Pretrain Option: On")
         train_data = t_train.get_word_indices_from_glove(
@@ -80,8 +81,21 @@ if __name__ == '__main__':
             print("Class Label: fine")
             # do the train function
             if(config.get("param", "model") == "bow"):
-                BagofWords_train.train(
-                    t_train, train_data, dev_data, num_classes=50)
+                bow_train.train(t_train, train_data, dev_data,
+                                   num_classes=50,
+                                   pretrain=config.getboolean(
+                                       "param", "pretrain"),
+                                   lr=config.getfloat("param", "lr"),
+                                   epoch=config.getint("param", "epoch"),
+                                   embedding_dim=config.getint(
+                                       "param", "embedding_dim"),
+                                   batch=config.getint("param", "batch"),
+                                   freeze=config.getboolean("param","freeze"),
+                                   hidden_dim=config.getint(
+                                       "param", "hidden_dim"),
+                                   hidden_layer=config.getint(
+                                       "param", "hidden_layer"),
+                                   pre_trained_weight=pre_trained_weight)
             elif (config.get("param", "model") == "bilstm"):
                 print("Model: bilstm")
                 print("----------------------------------------")
@@ -103,8 +117,21 @@ if __name__ == '__main__':
         elif(config.get("param", "class_label") == "coarse"):
             print("Class Label: coarse")
             if(config.get("param", "model") == "bow"):
-                BagofWords_train.train(
-                    t_train, train_data, dev_data, num_classes=6)
+                bow_train.train(t_train, train_data, dev_data,
+                                   num_classes=6,
+                                   pretrain=config.getboolean(
+                                       "param", "pretrain"),
+                                   lr=config.getfloat("param", "lr"),
+                                   epoch=config.getint("param", "epoch"),
+                                   embedding_dim=config.getint(
+                                       "param", "embedding_dim"),
+                                   batch=config.getint("param", "batch"),
+                                   freeze=config.getboolean("param","freeze"),
+                                   hidden_dim=config.getint(
+                                       "param", "hidden_dim"),
+                                   hidden_layer=config.getint(
+                                       "param", "hidden_layer"),
+                                   pre_trained_weight=pre_trained_weight)
             elif (config.get("param", "model") == "bilstm"):
                 print("Model: bilstm")
                 bilstm_train.train(t_train, train_data, dev_data,
@@ -128,7 +155,8 @@ if __name__ == '__main__':
         if(config.get("param", "class_label") == "fine"):
             print("Class Label: fine")
             if(config.get("param", "model") == "bow"):
-                BagOfWords_test.test(test_data, num_classes=50)
+                bow_test.test(test_data, num_classes=50, model_pth=config.get(
+                    "param", "bow_fine_pth"), output_pth=config.get("param", "fine_output"))
             elif (config.get("param", "model") == "bilstm"):
                 bilstm_test.test(t_test, test_data, num_classes=50, model_pth=config.get(
                     "param", "bilstm_fine_pth"), output_pth=config.get("param", "fine_output"))
@@ -136,7 +164,9 @@ if __name__ == '__main__':
         elif(config.get("param", "class_label") == "coarse"):
             print("Class Label: coarse")
             if(config.get("param", "model") == "bow"):
-                BagOfWords_test.test(test_data, num_classes=6)
+                print("Model: bow")
+                bow_test.test(test_data, num_classes=6, model_pth=config.get(
+                    "param", "bow_coase_pth"), output_pth=config.get("param", "coarse_output"))
             elif (config.get("param", "model") == "bilstm"):
                 print("Model: bilstm")
                 bilstm_test.test(t_test, test_data, num_classes=6, model_pth=config.get(
