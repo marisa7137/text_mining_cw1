@@ -189,7 +189,7 @@ def train(t, train_data, dev_data, num_classes, pretrain, lr, epoch, batch, embe
                 dev_losses, dev_accs, dev_F1s = development(
                     batch, dev_loader, model, loss_function, dev_losses, dev_accs, dev_F1s)
                 print(
-                    "Dev batch", f'epoch: {e}, loss: {dev_losses[-1]}, accuracy: {dev_accs[-1]}, f1 Score: {dev_F1s[-1]}')
+                    "Dev batch", f'epoch: {e+1}, loss: {dev_losses[-1]}, accuracy: {dev_accs[-1]}, f1 Score: {dev_F1s[-1]}')
 
 
         # record the data for each epoch
@@ -199,7 +199,7 @@ def train(t, train_data, dev_data, num_classes, pretrain, lr, epoch, batch, embe
 
         # print for each epoch
         print("Train epoch",
-              f'epoch: {e}, loss: {loss_batch/cnt}, accuracy: {acc_batch/cnt}, f1 Score: {f1_batch/cnt}, lr: {adam_lr}')
+              f'epoch: {e+1}, loss: {loss_batch/cnt}, accuracy: {acc_batch/cnt}, f1 Score: {f1_batch/cnt}, lr: {adam_lr}')
 
         # update optimizer scheduler
         scheduler.step()

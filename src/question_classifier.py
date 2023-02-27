@@ -155,7 +155,7 @@ if __name__ == '__main__':
         if(config.get("param", "class_label") == "fine"):
             print("Class Label: fine")
             if(config.get("param", "model") == "bow"):
-                bow_test.test(test_data, num_classes=50, model_pth=config.get(
+                bow_test.test(t_test, test_data, num_classes=50, model_pth=config.get(
                     "param", "bow_fine_pth"), output_pth=config.get("param", "fine_output"))
             elif (config.get("param", "model") == "bilstm"):
                 bilstm_test.test(t_test, test_data, num_classes=50, model_pth=config.get(
@@ -165,7 +165,7 @@ if __name__ == '__main__':
             print("Class Label: coarse")
             if(config.get("param", "model") == "bow"):
                 print("Model: bow")
-                bow_test.test(test_data, num_classes=6, model_pth=config.get(
+                bow_test.test(t_test, test_data, num_classes=6, model_pth=config.get(
                     "param", "bow_coase_pth"), output_pth=config.get("param", "coarse_output"))
             elif (config.get("param", "model") == "bilstm"):
                 print("Model: bilstm")
