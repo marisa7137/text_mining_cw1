@@ -15,10 +15,16 @@ config.read("../data/bow.config")
 
 def plot_history(train_loss, train_accs, train_F1s, dev_loss, dev_accs, dev_F1s, num_classes, num_epoches):
     """
-    Plot the figures of training and developing
-    :param acc: np
-    :param loss: np
-    :param result_dir: path to save the figures
+    Plot the figures of training and developing losses, accuracies, and f1 socres
+    :param list train_loss: the training loss list of each epoch
+    :param list train_accs: the training accuracy list of each epoch
+    :param list train_F1s: the training F1 score list of each epoch 
+    :param list dev_loss: the development loss list of each epoch
+    :param list dev_accs: the development accuracy list of each epoch
+    :param list dev_F1s: the development F1 score list of each epoch 
+    :param int num_classes: the number of classes, 6 or 50
+    :param int num_epoches: the number of epoches
+    :return: None
     """
 
     # generate saving path based on classes

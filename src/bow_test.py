@@ -5,6 +5,16 @@ from sklearn.metrics import accuracy_score, f1_score
 
 
 def test_output(t, predValue_idx, num_classes, output_pth):
+    """
+        Function:
+            Generate the format output text files including the raw sentecnce, groudtruth label and predicted laebl
+        punctions
+        Args:
+            t: text parser object
+            predValue_idx: the index value from the model predit output
+            num_classes: define the fine or coarse class
+            output_pth: the path for storing the output
+    """
 
     if (num_classes == 6):
         raw_sentence = t.raw_sentences
