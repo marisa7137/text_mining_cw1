@@ -7,6 +7,7 @@ config.read("data/bilstm.config")
 
 random.seed(6)
 
+
 def random_split(input_data, shuffle=True, ratio=0):
     '''
     Function: 
@@ -29,7 +30,11 @@ def random_split(input_data, shuffle=True, ratio=0):
     sublist_b = input_data[offset:]
     return sublist_a, sublist_b
 
+
 def generate_train_dev():
+    """
+    Generate the train, dev files and save to the corrosponding path
+    """
     # Read the train 5500 label text file
     path = os.path.join(os.getcwd(), "data", "train_5500.label.txt")
     f = open(path)
@@ -40,16 +45,17 @@ def generate_train_dev():
     train, dev = random_split(lines, shuffle=True, ratio=0.9)
 
     # generate the train data
-    file = open(config.get('param','path_train'), 'w')
+    file = open(config.get('param', 'path_train'), 'w')
     for i in range(len(train)):
         file.write(train[i])
     file.close()
 
     # generate the dev data
-    file = open(config.get('param','path_dev'), 'w')
+    file = open(config.get('param', 'path_dev'), 'w')
     for i in range(len(dev)):
         file.write(dev[i])
     file.close()
+
 
 if __name__ == '__main__':
     generate_train_dev()

@@ -1,7 +1,12 @@
 import torch.nn as nn
-
-
 class Word_Embedding(nn.Module):
+    """
+    Class:
+        Word_Embedding: the class to create Randomly initialised word embeddings/ Pre-trained word embeddings
+    forward:
+        forward the embedding with word_indices
+    """
+
     def __init__(self, pre_train_weight, vocab_size, embedding_dim, from_pre_train: bool, freeze: bool):
         super().__init__()
         if from_pre_train:

@@ -7,7 +7,7 @@ import string
 
 
 class TextParser():
-    def __init__(self, pathfile, tofile, stopwords_pth, fine_label_pth, coarse_label_pth, vocab_pth,glove_vocab_pth,glove_weight_pth):
+    def __init__(self, pathfile, tofile, stopwords_pth, fine_label_pth, coarse_label_pth, vocab_pth, glove_vocab_pth, glove_weight_pth):
         self.raw_text_path = pathfile   # Path for the raw text
         self.is_fine = True
         self.stopwords_path = stopwords_pth     # Path for the stopwords collection text
@@ -100,6 +100,13 @@ class TextParser():
         return result
 
     def load_vocab_from_file(self):
+        """
+        Function:
+            load the vocab from the given file
+        Args:
+            self (text parser itself)
+
+        """
         if len(self.vocab) > 0:
             self.vocab.clear()
         with open(self.vocab_path, 'r') as f:
@@ -108,6 +115,12 @@ class TextParser():
                 self.vocab.append(line)
 
     def load_fine_label_from_file(self):
+        """
+        Function:
+            load the fine labels from the given file
+        Args:
+            self (text parser itself)
+        """
         if len(self.fine_labels) > 0:
             self.fine_labels.clear()
         with open(self.fine_labels_path, 'r') as f:
@@ -116,6 +129,13 @@ class TextParser():
                 self.fine_labels.append(line)
 
     def load_coarse_label_from_file(self):
+        """
+        Function:
+            load the coarse labels from the given file
+        Args:
+            self (text parser itself)
+        """
+
         if len(self.coarse_labels) > 0:
             self.coarse_labels.clear()
         with open(self.coarse_labels_path, 'r') as f:
@@ -124,6 +144,13 @@ class TextParser():
                 self.coarse_labels.append(line)
 
     def create_vocab(self, to_file):
+        """
+        Function:
+            Create Vocabulary List and adds padding at the start of the file and #unk# at the end of the file
+        Args:
+            self (text parser itself)
+            to_file(bool): wether save the vocab to the file
+        """
         if len(self.vocab) == 0:
             if len(self.words) > 0:
                 self.vocab_count_dict = Counter(self.words)
@@ -138,6 +165,13 @@ class TextParser():
                         f.write(word + '\n')
 
     def create_label(self, to_file):
+        """
+        Function:
+            Create label Lists(fine and coarse) and save to the files.
+        Args:
+            self (text parser itself)
+            to_file(bool): wether save the vocab to the file
+        """
         if len(self.fine_labels) == 0:
             if len(self.fine_pair) > 0:
                 label_list = [lb[0] for lb in self.fine_pair]
@@ -162,6 +196,16 @@ class TextParser():
                         f.write(word + '\n')
 
     def get_word_indices(self, type, dim, from_file):
+        """
+        Function:
+            Create word representations and save as [label, tokens] with associate index number from the given vocab and label file
+        Args:
+            self (text parser itself)
+            type(str): fine or coarse
+            dim(int): the demonsion of the word vectoer
+            from_file(bool): whether parse the data from previous generate files.
+        """
+
         if from_file:
             self.load_vocab_from_file()
             if type == 'coarse':
@@ -190,7 +234,16 @@ class TextParser():
                 (label_embedded, torch.LongTensor(word_vec)))
         return self.indexed_sentence_pair
 
+
     def get_word_indices_from_glove(self, type, dim):
+        """
+        Function:
+            Create word index and save as [label, tokens] with associate index number from the pretrain glove file
+        Args:
+            self (text parser itself)
+            type(str): fine or coarse
+            dim(int): the demonsion of the word vectoer
+        """
         weight = np.load(self.glove_weight_path)
         self.glove_embedding = torch.Tensor(weight)
         if len(self.glove_vocab) > 0:
@@ -225,8 +278,14 @@ class TextParser():
                 self.indexed_sentence_pair.append(
                     (label_embedded, torch.LongTensor(word_vec)))
         return self.indexed_sentence_pair
-    
+
     def create_vocab_and_weight_from_pretrained_glove(self):
+        """
+        Function:
+            Create vocabulary list and weights from pretrain glove and save to the corrsponding file
+        Args:
+            self (text parser itself)
+        """
         self.load_vocab_from_file()
         with open(self.glove_embedding_path, 'r', encoding='utf8') as f1:
             for line in f1:

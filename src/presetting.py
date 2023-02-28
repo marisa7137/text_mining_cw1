@@ -12,9 +12,6 @@ if __name__ == '__main__':
     test = t_train.get_word_indices_from_glove(type='fine', dim=20)
     print(len(t_train.glove_vocab))
 
-   
-    
-    
-    #clearprint(test)
+
         
 
