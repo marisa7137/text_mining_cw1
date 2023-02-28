@@ -31,9 +31,6 @@ def test_output(t, predValue_idx, num_classes, output_pth):
         # Create table header
         table_header = "{:<{}} {:<{}} {:<{}}\n".format(
             "Groud Truth Label", column_width, "Predict Label ", column_width, "Question", column_width)
-        # lines = [
-        #     'Groud Truth Label               Predict Label                             Question \n']
-        # Create table rows using a for loop
         table_rows = ""
 
         for idx in range(0, len(predValue_idx)):
