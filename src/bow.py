@@ -25,12 +25,13 @@ class Model(torch.nn.Module):
         
         if from_pre_train:
             self.fc3=nn.Linear(in_features=300, out_features=hidden_layer_size)
+            self.norm = nn.BatchNorm1d(num_features=300)
         else:
             self.fc3=nn.Linear(in_features=embedding_dim, out_features=hidden_layer_size)
+            self.norm = nn.BatchNorm1d(num_features=embedding_dim)
         self.af3 = nn.Tanh()
         self.fc4 = nn.Linear(in_features=hidden_layer_size, out_features=num_of_classes)
         self.af4 = nn.LogSoftmax(dim=0)
-        self.norm = nn.BatchNorm1d(num_features=300) # BatchNorm2d only accepts 4D inputs while BatchNorm1d accepts 2D or 3D inputs
         self.dropout = nn.Dropout(p=0.1) # dropout
        
 
