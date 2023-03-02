@@ -32,7 +32,7 @@ class Model(torch.nn.Module):
         self.af3 = nn.Tanh()
         self.fc4 = nn.Linear(in_features=hidden_layer_size, out_features=num_of_classes)
         self.af4 = nn.LogSoftmax(dim=0)
-        self.dropout = nn.Dropout(p=0.1) # dropout
+        self.dropout = nn.Dropout(p=0.2) # dropout
        
 
 
