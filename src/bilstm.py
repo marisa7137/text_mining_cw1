@@ -75,7 +75,7 @@ class Model(nn.Module):
         out = torch.cat((forward, back), dim=1) # torch.Size([545, 512])
         out = self.dropout(out)
         out = self.fc3(out)
-        out = self.af3(out)
+        # out = self.af3(out)
         return out
 
        

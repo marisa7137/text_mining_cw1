@@ -3,7 +3,7 @@ import os
 from configparser import ConfigParser
 # import the configure files
 config = ConfigParser()
-config.read("data/bilstm.config")
+config.read("../data/bilstm.config")
 
 random.seed(6)
 

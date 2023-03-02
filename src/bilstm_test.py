@@ -72,7 +72,7 @@ def test(t, test_data, num_classes, model_pth, output_pth):
 
     # define the loss function
     # calculate the average negative log loss of a batch
-    loss_function = torch.nn.NLLLoss(reduction='mean')
+    loss_function = torch.nn.CrossEntropyLoss()
 
     # initialization
     test_losses, test_accs, test_F1s = [], [], []

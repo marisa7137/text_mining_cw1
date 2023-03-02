@@ -46,5 +46,5 @@ class Model(torch.nn.Module):
         out = self.fc3(out)
         out = self.af3(out)
         out = self.fc4(out)
-        out = self.af4(out)
+        # out = self.af4(out)
         return out
