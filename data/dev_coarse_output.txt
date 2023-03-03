@@ -1,0 +1,502 @@
+The macro F1 for this experiment is 0.8035963553090935
+ Groud Truth Label    Predict Label        Question            
+NUM                  ENTY                 When did humans first begin to write history seriously ?
+LOC                  HUM                  What continent 's second-highest peak is Mont Blanc ?
+HUM                  ENTY                 What company was the original sponsor of TV 's Superman ?
+HUM                  ENTY                 What buxom blonde appeared on the cover of more than 5 magazines ?
+ENTY                 DESC                 What should the oven be set at for baking Peachy Oat Muffins ?
+ENTY                 ENTY                 What is Ray Bradbury 's illustrated man illustrated with ?
+LOC                  DESC                 Where are good science sites on the Internet ?
+ENTY                 HUM                  What Sinatra hit did he dooby dooby do in ?
+LOC                  HUM                  What countries have the largest armed forces in the world ?
+NUM                  HUM                  How long was Mao 's 1930s Long March ?
+ENTY                 HUM                  What trade did the 15th and 16th century Portuguese hope to control between Asia and Europe ?
+DESC                 HUM                  What is a Chinese `` spouting '' bowl ?
+HUM                  LOC                  What actor learned to play the saxophone and speak Russian for a role in a movie ?
+HUM                  LOC                  What fictional character is known as the `` melancholy Dane '' ?
+ENTY                 NUM                  What is the brand name of the chemical daminozide ?
+NUM                  DESC                 How many dots make up the symbol for `` because '' ?
+NUM                  ENTY                 How much pizza do Americans eat in a day ?
+DESC                 DESC                 How can I find out how much it costs to raise a baby for six months ?
+HUM                  ENTY                 What television network flogged its sports programming on Inga Nielsen 's body in 197 ?
+HUM                  HUM                  Who was the first Holy Roman Emperor ?
+HUM                  ENTY                 What is the full name of the man who invented the multicolored game cube that has 42.3 quintillion potential combinations ?
+HUM                  DESC                 Who appointed the chair of the Federal Reserve ?
+LOC                  NUM                  What city 's theatrical district has been dubbed The Roaring Forties ?
+DESC                 ENTY                 What is the main application of sodium hydrosulfite ?
+ENTY                 NUM                  What famed tennis tournament 's men 's singles title was Fred Perry the last Englishman to win ?
+HUM                  HUM                  What hockey team did Wayne Gretzky play for ?
+ENTY                 DESC                 What soft drink first appeared in the Old Corner Drug Store in Waco , Texas , in 1885 ?
+ENTY                 LOC                  Name the soft drink that is `` number one in the sun . ''
+NUM                  HUM                  How big is a baby bald eagle ?
+HUM                  DESC                 What United States President had dreamed that he was assassinated ?
+DESC                 HUM                  How can anyone tell if a female had sexual intercourse ?
+HUM                  LOC                  Who is Stein Eriksen ?
+LOC                  ENTY                 What Italian city of 155 were Leonardo da Vinci , Michaelangelo , and Machiavelli all working in ?
+HUM                  DESC                 Who made the deodorant that claimed that it `` actually builds up resistance to odor '' ?
+LOC                  ENTY                 On which Hawaiian island is Pearl Harbor ?
+HUM                  LOC                  Who did Arthur H. Bremer try to assassinate on May 15 , 1972 ?
+NUM                  NUM                  What is the speed of the Mississippi River ?
+NUM                  LOC                  At what age did Rossini stop writing opera ?
+HUM                  NUM                  Who is Peter Weir ? 
+LOC                  ENTY                 Where can I find examples of legal cases about the Individuals with Disabilities Education Act ?
+ENTY                 DESC                 What is the greatest source of `` white '' magic in the Marvel Universe ?
+HUM                  DESC                 Who invented the horoscope ?
+ENTY                 DESC                 What nuclear-powered Russian submarine sank in the Norwegian Sea on April 7 , 1989 ?
+ENTY                 HUM                  What is the name of the largest water conservancy project in China ?
+NUM                  LOC                  What is the life expectancy of an elephant ?
+HUM                  ENTY                 The lawyer who represented Randy Craft , what was his name ?
+HUM                  NUM                  What group starred in the movie Rock Around the Clock ?
+LOC                  DESC                 Where can I get piano music for the Jamiroquai song Everyday for the midi ?
+NUM                  DESC                 When did World War I start ?
+NUM                  DESC                 What is the temperature for baking Peachy Oat Muffins ?
+HUM                  NUM                  What is the name of a Greek god ?
+NUM                  ENTY                 How many miles is it from London , England to Plymouth , England ?
+HUM                  DESC                 Who is King in Alley Oop 's home of Moo ?
+ENTY                 ENTY                 What is the longest chemical name , consisting of 35 letters ?
+DESC                 ENTY                 What does Freddy Freeman say to become Captain Marvel Jr. ?
+DESC                 HUM                  What effect does friction have on perpetual motion ?
+DESC                 HUM                  How do doctors diagnose bone cancer ?
+LOC                  HUM                  What river flows past the Temple of Karnak ?
+LOC                  ENTY                 Where is Belize located ?
+HUM                  ENTY                 What Nazi leader killed himself in jail just before he was to be executed as a war criminal ?
+HUM                  HUM                  What president 's ghost is said to haunt the White House ?
+ABBR                 LOC                  What is the full name of the PLO ?
+LOC                  NUM                  Where did the Battle of the Bulge take place ?
+LOC                  NUM                  Where are the leading medical groups specializing in lung diseases ?
+ENTY                 DESC                 What is the celtic symbol for `` life '' ?
+HUM                  LOC                  What two baseball players make up the battery ?
+LOC                  ENTY                 Name the country which Honecker lived in .
+LOC                  NUM                  What are the only two states that incorporate the Confederate battle flag in their flags ?
+ENTY                 ENTY                 What drug did Sigmund Freud become fascinated with while experimenting with the treatment of neurasthenia ?
+DESC                 ENTY                 What are the Greek numerals ?
+HUM                  HUM                  What South Vietnamese president was assassinated by his generals in 1963 ?
+ENTY                 HUM                  What color eyes are most sensitive to light ?
+DESC                 DESC                 What are the seven deadly sins ?
+LOC                  HUM                  Where is the Loop ? 
+ENTY                 LOC                  What TV series features the adventures of a married couple named Jonathan and Jennifer ?
+ENTY                 HUM                  What trophy is awarded to the winners of the Super Bowl ?
+NUM                  DESC                 What is the average time to kiss somene ?
+HUM                  ENTY                 What were Babe Ruth 's Christian names ?
+ENTY                 ENTY                 Which of the five senses develops first ?
+ENTY                 DESC                 What color is Mr. Spock 's blood ?
+ENTY                 ENTY                 What four forms does gold occur in ?
+HUM                  NUM                  Who sought to create The Great Society ?
+DESC                 ENTY                 What causes the redness in your cheeks when you blush ?
+NUM                  LOC                  What date did man first land on the moon ?
+ENTY                 LOC                  What was the first ready-to-eat breakfast cereal ?
+DESC                 DESC                 What makes Black Hills , South Dakota a tourist attraction ?
+NUM                  LOC                  How many were in attendance at the Last Supper ?
+HUM                  ENTY                 What hard-of hearing artist painted Sunflowers ?
+LOC                  HUM                  Where is Dartmouth College ?
+ENTY                 HUM                  What is Dudley Do-Right 's horse 's name ?
+DESC                 DESC                 What is the origin of `` Beauty is in the eye of the beholder '' ?
+DESC                 ENTY                 What does `` saute '' mean ?
+LOC                  DESC                 Where is the biggest bell ?
+ABBR                 ENTY                 What is DTMF ?      
+HUM                  HUM                  Who created private detective Philip Marlowe ?
+ENTY                 LOC                  What sport is played on the largest field ?
+HUM                  DESC                 What character narrates Treasure Island ?
+NUM                  ENTY                 How many people live in the Falklands ?
+HUM                  HUM                  Who sings the themes for `` Dawson 's Creek '' and `` Felicity '' ?
+ENTY                 NUM                  What developed a crack in 1835 while tolling the death of U.S. Chief Justice John Marshall ?
+DESC                 DESC                 What is a person 's socioeconomic position ?
+HUM                  NUM                  Who was credited with saying : `` I never met a man I did n't like '' ?
+NUM                  ENTY                 How many home runs did Lou Gehrig have during his career ?
+HUM                  NUM                  Who created the character James Bond ?
+DESC                 HUM                  How does the tail affect the flight of a kite ?
+ENTY                 NUM                  What was the sequel to The Moon 's Balloon ?
+ENTY                 DESC                 What famed gangland slaughter cut into the membership of Bugs Moran 's outfit ?
+ENTY                 LOC                  What is the mission of Nike ?
+HUM                  ENTY                 Who was the first English circumnavigator of the globe ?
+DESC                 ENTY                 What must a Las Vegas blackjack dealer do when he reaches 16 ?
+NUM                  ENTY                 How many stations do you shoot from in the basketball game `` Around the World '' ?
+DESC                 ENTY                 How can I find out what year a Beanie Baby was introduced ?
+DESC                 LOC                  What does `` Semper Fidelis '' mean ?
+HUM                  HUM                  What fruit-topped actress was known as The Brazilian Bombshell ?
+LOC                  ENTY                 Where does the Santa Fe Trail begin and end ?
+HUM                  NUM                  What professional sports league originated the college draft ?
+NUM                  HUM                  What is the number of American soldiers deployed to South Korea ?
+LOC                  NUM                  What country is located at 13 degrees North latitude and 10 degrees East longitude ?
+LOC                  LOC                  On what river is Strasbourg built ?
+NUM                  DESC                 How many small businesses are there in the U.S .
+ENTY                 ENTY                 What beer advertised that it had `` three rings '' ?
+ENTY                 DESC                 What explosive do you get by mixing charcoal , sulfur and saltpeter ?
+HUM                  DESC                 What is the name of Joan Jett 's band ?
+LOC                  ENTY                 Which continent has the most roses ?
+ENTY                 HUM                  What does the method called `` cold fusion '' create ?
+DESC                 NUM                  Why do girls have to wear training bras ?
+HUM                  NUM                  Who is the president of Bolivia ?
+DESC                 ENTY                 What is a gandy dancer ?
+DESC                 LOC                  Why are lions called `` King of the Jungle '' ?
+ENTY                 LOC                  What Lewis Carroll book introduced Humpty Dumpty to the world ?
+LOC                  LOC                  What is the U.S. location of Procter & Gamble corporate offices ?
+ENTY                 DESC                 What are the four most widely-used languages in North America ?
+NUM                  DESC                 How many people die from snakebite poisoning in the U.S. per year ?
+HUM                  HUM                  Which member of Charlie 's Angels sang vocals for Josie and the Pussycats ?
+ENTY                 NUM                  What type of betting is used in horse racing ?
+ENTY                 NUM                  Which is the best opening move in chess ?
+ENTY                 ABBR                 What do West Indian steel bands use as instruments ?
+ENTY                 DESC                 Which Beatles disc cover honors the Rolling Stones ?
+ENTY                 DESC                 What kind of fish is a coney ?
+HUM                  DESC                 Who invented the process to make condensed milk ?
+HUM                  LOC                  Who has more DNA - a man or a woman ?
+ENTY                 HUM                  What is the folklore story regarding birds ' nests and birds in Christmas trees ?
+DESC                 DESC                 Why did the chicken cross the road ?
+DESC                 LOC                  How can someone become a federal agent ?
+DESC                 HUM                  How do you reference a website ?
+ENTY                 HUM                  What was the distinguishing mark on the `` Little Rascals '' dog ?
+LOC                  LOC                  Where do the Grimace and Mayor McCheese live ?
+NUM                  LOC                  What is the per-capita income of Colombia , South America ?
+LOC                  ENTY                 Where are 8 of the 10 highest mountains in the world ?
+NUM                  ENTY                 How long does it take the typical American to eat 23 quarts of ice cream ?
+LOC                  HUM                  Where do you find the answers for all these questions ?
+ENTY                 ABBR                 What line of candy products included Super Skrunch and Peanut Butter Oompas ?
+ENTY                 LOC                  Which two products use a tiger as their symbol ?
+NUM                  ENTY                 What percentage of children between the ages of two and eleven watch ` The Simpsons ' ?
+HUM                  DESC                 Which of these are authors ?
+NUM                  ENTY                 What are the odds of giving birth to twins ?
+NUM                  HUM                  How many verses are in the Bible ?
+HUM                  ENTY                 What is the name of actor Rex Harrison 's son , who starred in a modestly popular TV show during the late 1960's ?
+HUM                  DESC                 Who was the first doctor to successfully transplant a liver ?
+DESC                 HUM                  What are tannins ?  
+NUM                  NUM                  How many years did Sleeping Beauty sleep ?
+LOC                  HUM                  What sea surrounds the Cayman Islands ?
+ENTY                 HUM                  What is a fear of money ?
+ABBR                 LOC                  What does BTU mean ?
+LOC                  ENTY                 What city is sometimes called The Athens of Switzerland ?
+DESC                 NUM                  What is a turnkey contract ?
+ENTY                 ENTY                 What 's the U.S. Navy hymn ?
+NUM                  LOC                  What is the average cost for four years of medical school ?
+ENTY                 LOC                  Ray Charles is best known for playing what instrument ?
+LOC                  ENTY                 What country is home to Heineken beer ?
+NUM                  HUM                  How many cards is each player dealt in Contract Bridge ?
+ENTY                 LOC                  What Hollywood dog died in the arms of Jean Harlow in 1932 ?
+HUM                  DESC                 What President had never held an elected office until he was elected to the White House ?
+ENTY                 NUM                  What sign is the best love match for a horoscope sign ?
+LOC                  NUM                  What volcano showers ash on Sicily ?
+NUM                  ENTY                 How many people live in Tokyo ?
+ENTY                 DESC                 What racehorse won an Associated Press poll as the greatest horse of the 20th century ?
+HUM                  LOC                  Who used AuH2O as an election slogan ?
+NUM                  DESC                 How fast must a spacecraft travel to escape Earth 's gravity ?
+LOC                  NUM                  Where are there aborigines ?
+LOC                  HUM                  What state does Martha Stewart live in ?
+ENTY                 NUM                  What is the organizational structure of the New Delhi Indira Gandhi airport ?
+HUM                  NUM                  What are the residents of the island of Lesbos called ?
+HUM                  ENTY                 Who was the author of the novel `` Far From the Madding Crowd '' ?
+HUM                  ENTY                 Who played the Ringo Kid in the 1939 film Stagecoach ?
+HUM                  LOC                  What are the four railways in Monopoly ?
+DESC                 NUM                  What ever happened to the once popular Yale Lock Company ?
+DESC                 HUM                  Why does it snow ?  
+LOC                  HUM                  What country boasts the southernmost point in continental Europe ?
+HUM                  DESC                 Who is the Pope ?   
+HUM                  HUM                  What classical Spanish writer warned : `` All that glitters is not gold '' ?
+LOC                  DESC                 Where is Santa Lucia ?
+ENTY                 ENTY                 What was the name of the television show , starring Karl Madsen , that had San Francisco in the title ?
+NUM                  DESC                 How many holes are there in a tenpin bowling ball ?
+DESC                 DESC                 Why was Muhammad Ali stripped of his title and barred from boxing in 1967 ?
+ENTY                 ENTY                 What is a fear of sinning ?
+NUM                  ENTY                 What is the chromosome number of an elephant ?
+HUM                  ENTY                 What 's the nickname of oddsmaker Jimmy Snyder ?
+DESC                 ENTY                 Why can 't you taste anything when you have a cold ?
+ENTY                 ENTY                 A corgi is a kind of what ?
+HUM                  ENTY                 What bread company used to feature stickers of the Cisco Kid on the ends of their packages ?
+LOC                  HUM                  Where is Mile High Stadium ?
+LOC                  NUM                  Where on the Internet can I find a song lyrics database similar to the International Lyrics Server ?
+ENTY                 NUM                  Mississippi is nicknamed what ?
+NUM                  HUM                  When was child labor abolished ?
+DESC                 ENTY                 What made the short-lived Star Hawks strip so unique ?
+NUM                  DESC                 How many bones are there in the human hand ?
+ENTY                 DESC                 What age followed the Bronze Age ?
+HUM                  HUM                  Who did Dita Beard work for ?
+HUM                  NUM                  Who wrote : `` Poems are made by fools like me but only God can make a tree '' ?
+HUM                  ENTY                 What 's Mrs. Bridges 's job on TV 's Upstairs , Downstairs ?
+HUM                  NUM                  Who painted Mother and Child ?
+LOC                  LOC                  What is the highest waterfall in the United States ?
+ENTY                 HUM                  What is the correct way to use `` may '' vs. `` might '' ?
+ENTY                 LOC                  What currency is used in Australia ?
+ENTY                 LOC                  What Muhammad Ali maneuver was George Foreman the first victim of ?
+LOC                  ENTY                 What is the largest lake in North America ?
+DESC                 NUM                  What is Occam 's Razor ?
+NUM                  DESC                 How many James Bond novels are there ?
+NUM                  ABBR                 How many times a day should you take a prescription marked `` q.i.d . '' ?
+HUM                  ENTY                 Who portrayed Sherlock Holmes in 14 films between 1939 and 1946 ?
+LOC                  DESC                 What country 's capital was formed when Pesth and Buda merged ?
+LOC                  NUM                  What U.S. state has the most blondes ?
+LOC                  DESC                 Where was `` I have fallen , and I can 't get up '' said first ?
+NUM                  NUM                  What amount of money did the Philippine ex-dictator Marcos steal from the treasury ?
+HUM                  LOC                  Which company claimed to be `` the world 's biggest toy store '' ?
+LOC                  HUM                  What mountainous region of the world is the Lhasa Apso dog native to ?
+DESC                 LOC                  How does the chain of command work inside an US army Apache helicopter ?
+NUM                  ENTY                 When do you plant winter wheat ?
+HUM                  DESC                 Who first broke the sound barrier ?
+ENTY                 DESC                 What commodity 's shortage was the largest single factor in keeping North American cars off the roads during World War II ?
+ENTY                 ENTY                 What do bicornate animals have two of ?
+NUM                  NUM                  How many head injuries are there in recreational ice skating each year ?
+LOC                  ENTY                 Where is the Rose Bowl played ?
+HUM                  ENTY                 Who won the first World Series ?
+DESC                 NUM                  What is the origin of the name Igor ?
+NUM                  NUM                  How long does it take to travel from Tokyo to Niigata ?
+LOC                  DESC                 What lake in Scotland is said to hold one or more monsters ?
+HUM                  ENTY                 Who is the Voyager project manager ?
+ENTY                 HUM                  What did 8 , CD NNS VBP TO VB NNP POS NN .
+HUM                  LOC                  Who was the lyricist and who was the composer between Gilbert and Sullivan ?
+HUM                  NUM                  What mustachioed comedian portrayed Frankie in North to Alaska ?
+ENTY                 NUM                  What kind of rocket launched the Surveyor spacecraft ?
+LOC                  NUM                  What is the largest office block in the world ?
+NUM                  DESC                 How far away is the moon ?
+LOC                  NUM                  What country are you in if you woo in the Wu dialect ?
+ENTY                 LOC                  What animals did The Amazing Three masquerade as ?
+HUM                  HUM                  Who sells Viagra ?  
+NUM                  DESC                 What phone number can I call to have a tree planted ?
+DESC                 ABBR                 What is the difference between a median and a mean ?
+ENTY                 DESC                 What newspaper returned a Pulitzer Prize for the fraudulent story Jimmy 's World ?
+NUM                  DESC                 What is the cost of the drugs used in tuberculosis treatments ?
+HUM                  ENTY                 Who created the World Wide Web , WWW ?
+ENTY                 NUM                  What was Jimmy Durante 's theme song ?
+NUM                  NUM                  How many points is a bullseye worth in darts ?
+HUM                  NUM                  Who wrote ` Hamlet ' ?
+DESC                 HUM                  What is a transistor ?
+DESC                 ENTY                 What is the design of the ship Titanic ?
+NUM                  LOC                  What is the highest number of home runs on record for any one game ?
+LOC                  DESC                 What is the largest island in the Mediterranean Sea ?
+ENTY                 ABBR                 What are the two languages of Malta ?
+DESC                 DESC                 Why were red M&Ms discontinued then brought back ?
+HUM                  LOC                  Who advised listeners to `` see the U.S.A. in your Chevrolet '' ?
+LOC                  DESC                 Where 's the GUM department store ?
+HUM                  DESC                 Who sang about Desmond and Molly Jones ?
+NUM                  LOC                  When did Spain and Korea start ambassadorial relations ?
+ENTY                 HUM                  What is a fear of night or darkness ?
+NUM                  HUM                  How many eyes does a bat have ?
+HUM                  HUM                  Which Bloom County resident wreaks havoc with a computer ?
+ENTY                 LOC                  Jude Law was in what movie ?
+DESC                 LOC                  What is the feudal system ?
+NUM                  HUM                  How far is it from Phoenix to Blythe ?
+NUM                  ENTY                 How fast do cheetahs run ?
+ENTY                 ENTY                 What is widely used to detect prenatal birth defects ?
+ENTY                 ABBR                 What color tennis balls are used at Wimbledon ?
+ENTY                 ENTY                 What is the most common kind of skin cancer in the U.S. ?
+DESC                 ENTY                 What is the Hub of London ?
+NUM                  NUM                  What does a teaspoon of matter weigh in a black hole ?
+HUM                  NUM                  Who is the founder of Scientology ?
+HUM                  DESC                 Which is the only Dick Tracy villain to appear three times ?
+ENTY                 HUM                  What baseball outcome required nine balls in 1879 , eight balls in 1880 and seven balls in 1881 ?
+NUM                  DESC                 What 's a perfect score in a gymnastics exercise ?
+NUM                  LOC                  What is the population of Japan ?
+NUM                  ENTY                 When was Microsoft established ?
+NUM                  NUM                  What was the date of Iraq 's invasion of Kuwait ?
+NUM                  DESC                 How many soldiers were involved in the last Panama invasion by the United States of America ?
+NUM                  NUM                  How many neurons are in the human brain ?
+DESC                 DESC                 Describe the Finnish music personality Salonen 's appearance .
+LOC                  ENTY                 What Scandinavian capital is built on nine bridge-connected islands ?
+HUM                  DESC                 What kind of women gave Sigmund Freud erotic dreams ?
+ENTY                 HUM                  What 's the main vegetable in vichyssoise ?
+ENTY                 DESC                 What disease does Katharine Hepburn have that makes her voice shake ?
+LOC                  HUM                  Where must a soccer goalie stand to be permitted to handle the ball ?
+ENTY                 DESC                 What is the zodiac sign for August 14 ?
+ENTY                 NUM                  Ray Charles plays which instrument ?
+HUM                  LOC                  Who wrote The Godfather ?
+LOC                  DESC                 Where is the Thomas Edison Museum ?
+DESC                 HUM                  What does the name Billie mean ?
+LOC                  NUM                  Where did the Inuits live ?
+ABBR                 ENTY                 What does HIV stand for ?
+DESC                 NUM                  What does camera-ready art mean ?
+ENTY                 DESC                 What kind of patent did Ermal Fraze get in 1963 ?
+DESC                 LOC                  What characteristics contribute to its `` intelligence '' ?
+HUM                  ENTY                 What record company was formed by Herb Alpert and Jerry Moss ?
+DESC                 LOC                  What is hebephrenia ?
+ENTY                 HUM                  What do manatees eat ?
+DESC                 DESC                 What is Tetrinet ?  
+ENTY                 HUM                  What 's destroyed in Genesis 19 : 24 ?
+DESC                 DESC                 Why was Washington , DC originally called District of Columbia ?
+DESC                 ENTY                 What is the origin of the term `` The Brooklyn Side '' in bowling ?
+LOC                  DESC                 What 's the name of a hotel in Indianapolis ?
+LOC                  LOC                  In What city or state do the most gay men live in ?
+HUM                  HUM                  Who betrayed Norway to the Nazis ?
+ENTY                 ENTY                 What English word contains the most letters ?
+ABBR                 NUM                  What does MSG stand for ?
+NUM                  DESC                 How many people own pets ?
+ENTY                 DESC                 What was the name of the movie that starred Sharon Stone and Arnold Schwarzenegger ?
+ENTY                 LOC                  What 's a `` Drinker respirator '' better known as ?
+NUM                  DESC                 What is the population of Kansas ?
+ENTY                 HUM                  The corpus callosum is in what part of the body ?
+DESC                 DESC                 How did the jack-o '-lantern get it 's name ?
+HUM                  HUM                  Who shot Billy the Kid ?
+LOC                  NUM                  What is the name of the planet that the Ewoks live on ?
+LOC                  LOC                  Where did Hillary Clinton graduate college ?
+DESC                 ENTY                 What is a bourdon tube ?
+HUM                  NUM                  Who started the Dominos Pizza chain ?
+LOC                  LOC                  Name the country of giants twelve times the size of man in `` Gulliver 's Travels . ''
+ENTY                 HUM                  What are three ways in which wind is created on the earth ?
+ENTY                 DESC                 What kind of flowers does detective Nero Wolfe raise ?
+DESC                 ABBR                 How does hair curl ?
+HUM                  HUM                  What future President became Senate majority whip under Harry Truman ?
+HUM                  DESC                 What is the world 's largest distilling company ?
+HUM                  HUM                  Who were leaders of the Byzantine empire ?
+LOC                  NUM                  What is the leading pecan and peanut growing state ?
+ABBR                 LOC                  What does RCA stand for ?
+HUM                  LOC                  What Nobel laureate was expelled from the Philippines before the conference on East Timor ?
+HUM                  LOC                  What TV character said ; `` One of these days , Alice , pow , right in the kisser '' ?
+NUM                  DESC                 The film `` Jaws '' was made in what year ?
+ENTY                 DESC                 What 's the highest possible bid in Contract Bridge ?
+HUM                  NUM                  Who was Red Grange ?
+ENTY                 DESC                 What is a word whose letters can be rearranged to form a different word ?
+HUM                  ENTY                 What Japanese electronics company was named for a coastal city northeast of Tokyo ?
+NUM                  ENTY                 How big is the universe actually ?
+HUM                  NUM                  What kind of people took part in Shays ' Rebellion in Massachusetts in 1787 ?
+HUM                  DESC                 What daughter of Henry VIII and Anne Boleyn became queen of England ?
+ABBR                 LOC                  What does pH stand for ?
+NUM                  NUM                  What 's the population of Mississippi ?
+LOC                  LOC                  Where is the Bulls basketball team based ?
+LOC                  HUM                  What Southern California town is named after a character made famous by Edgar Rice Burroughs ?
+ENTY                 LOC                  Which sex is denied voting rights in Kuwait ?
+DESC                 DESC                 What is the definition of hazmat ?
+NUM                  HUM                  How many of them are in sub-Saharan Africa ?
+HUM                  ENTY                 Who was shot in the back during a Poker game in Deadwood , the Dakota territory ?
+ENTY                 DESC                 In what ways did Ivan IV support Russian expansion ?
+LOC                  NUM                  In what nation is Edessa located nowadays ?
+ENTY                 NUM                  What is the English translation for the word `` caliente '' ?
+HUM                  DESC                 Name Dondi 's adoptive grandfather .
+NUM                  ENTY                 What is the latitude and longitude of El Paso , Texas ?
+LOC                  DESC                 What Kentucky city calls itself The Horse Center of America ?
+NUM                  DESC                 In 1990 , what day of the week did Christmas fall on ?
+LOC                  DESC                 Where can I get information and statistics on countries and nations ?
+HUM                  NUM                  What lawyer won the largest divorce settlement , $85 million , in U.S. history for Sheika Dena Al-Farri ?
+LOC                  LOC                  What city hosted the first Winter Olympics in Asia ?
+DESC                 LOC                  What causes an earthquake ?
+ENTY                 DESC                 What was the first domesticated bird ?
+DESC                 HUM                  What causes tuberculosis ?
+LOC                  HUM                  What landmark Italian restaurant can be found at 239 West 48th Street , New York City ?
+NUM                  NUM                  What year was Desmond Mpilo Tutu awarded the Nobel Peace Prize ?
+DESC                 ABBR                 What is Spumante ?  
+LOC                  NUM                  Where in a tree does photosynthesis occur ?
+NUM                  NUM                  On average , how many miles are there to the moon ?
+NUM                  ENTY                 How fast is light ? 
+NUM                  DESC                 What chapter of Gone with the Wind has Rhett Butler leaving Scarlett O 'Hara ?
+NUM                  LOC                  What 's the American dollar equivalent for 8 pounds in the U.K. ?
+HUM                  LOC                  Who invented the fountain ?
+LOC                  ENTY                 McCarren Airport is located in what city ?
+HUM                  DESC                 What was the name of Randy Craft 's lawyer ?
+DESC                 HUM                  What is a green bog ?
+ENTY                 LOC                  What is a research expedition in mountain climbing ?
+ENTY                 HUM                  What type of animal is the easiest kept pet there is ?
+HUM                  HUM                  Who won the 1967 Academy Award for Best Actor ?
+DESC                 DESC                 How do you pronounce `` Tzimisce '' ?
+DESC                 ENTY                 Why do people get calluses ?
+DESC                 DESC                 What is hypertext ? 
+NUM                  HUM                  How tall was the animated Frankenstein
+DESC                 ENTY                 Why is Jane Goodall famous ?
+HUM                  ABBR                 Who was the first American world chess champion ?
+HUM                  NUM                  Who was considered to be the father of psychology ?
+HUM                  ENTY                 Who won a Pulitzer Prize for his novel The Caine Mutiny ?
+ENTY                 HUM                  Which killer whale died at Sea World of a fungal infection ?
+DESC                 ENTY                 What will the weather be today ?
+DESC                 HUM                  How do you calculate the change in enthalpy of a chemical reaction ?
+HUM                  ENTY                 Who lived on the shores of the Gitchee Gumee River ?
+DESC                 ENTY                 What is the daily requirement of folic acid for an expectant mother ?
+LOC                  ENTY                 What is the largest county in size in Massachusetts ?
+HUM                  ENTY                 What longtime game show host dropped dead while jogging in Central Park in 1984 ?
+NUM                  ENTY                 How much did a McDonald 's hamburger cost in 1963 ?
+ENTY                 LOC                  What is `` the great American family cereal '' ?
+ENTY                 DESC                 In Kafka 's Metamorphosis , the hero awakes one morning to find himself turned into what ?
+LOC                  ENTY                 What is the best hospital for orthopedics in the country ?
+HUM                  ENTY                 Who fired Maria Ybarra from her position in San Diego council ?
+ENTY                 HUM                  What whisky is `` known by the company it keeps '' ?
+DESC                 DESC                 What baseball expression came from the nautical term for ships sailing between the Atlantic and Pacific before the Panama Canal ?
+HUM                  DESC                 What costume designer decided that Michael Jackson should only wear one glove ?
+NUM                  ENTY                 When was the Parthenon built ?
+NUM                  NUM                  How much did the minimum wage amount to in 1991 ?
+HUM                  LOC                  Who said `` the only thing we have to fear is fear itself '' ?
+DESC                 DESC                 What did n't Rocky Marciano do in his pro boxing career ?
+ENTY                 DESC                 What 's the largest letter in Salvador Dali 's signature ?
+ABBR                 NUM                  What does IQ stand for ?
+NUM                  ENTY                 How many equal sides are there on a scalene triangle ?
+DESC                 DESC                 How do you select wine ?
+DESC                 DESC                 What is paracetamol ?
+HUM                  HUM                  What title did Shevardnadze have during the Soviet era ?
+LOC                  DESC                 What London street is the home of British journalism ?
+DESC                 ENTY                 What is the origin of thank you notes ?
+LOC                  HUM                  What do most tourists visit in Reims ?
+NUM                  HUM                  How many American soldiers have died for their country to date ?
+DESC                 NUM                  What is `` the washed vodka '' ?
+LOC                  DESC                 What city is Logan Airport in ?
+ENTY                 LOC                  What chemicals are used in lethal injection ?
+DESC                 ENTY                 How do you get dates with the `` Hooters '' girls ?
+HUM                  HUM                  Name one of King Henry VIII 's wives .
+DESC                 ENTY                 What is the meaning of Jesus ?
+LOC                  HUM                  What were the first bodies visited by spacecraft ?
+ENTY                 HUM                  What do ladybugs eat ?
+ENTY                 ENTY                 What are the ingredients of Coca-Cola ?
+LOC                  NUM                  What is the fastest growing state in the U.S.A. in 1998 ?
+ENTY                 LOC                  What color flies closest to the staff on Belgium 's flag ?
+ENTY                 HUM                  What film or films has Jude Law appeared in ?
+DESC                 HUM                  What is the difference between a fruit and a vegetable ?
+LOC                  LOC                  Where did the Maya people live ?
+ENTY                 DESC                 What 1942 espionage movie reunited director John Huston with Maltese Falconers Humphrey Bogart , Mary Astor , and Sidney Greenstreet ?
+ENTY                 HUM                  What 's the international radio code word for the letter B ?
+ENTY                 HUM                  What part of their attire were `` pothooks '' to cowboys of the Old West ?
+NUM                  ENTY                 What is the current population for these countries : France , Spain , Italy , Greece , Austria , Germany , Switzerland , the Netherlands ?
+DESC                 NUM                  How do you write a correct critical analysis of a poem ?
+LOC                  HUM                  What country is the setting for Edgar Allan Poe 's The Pit and the Pendulum ?
+ENTY                 ENTY                 How do you say `` Grandma '' in Irish ?
+ENTY                 ENTY                 What horse did Zorro ride ?
+HUM                  ENTY                 What jockey won 17 Triple Crown races ?
+HUM                  NUM                  What 's comic strip photographer Peter Parker 's secret identity ?
+DESC                 DESC                 What 's a short ton ?
+DESC                 HUM                  What are the living conditions in Cuba ?
+ENTY                 ENTY                 What does a chef coddle eggs in ?
+LOC                  DESC                 What country has the best defensive position in the board game Diplomacy ?
+LOC                  DESC                 What Asian gulf were the destroyers Maddox and C Turner Joy shot up in ?
+LOC                  NUM                  Where did Ty Cobb grow up ?
+HUM                  HUM                  Who were the only two bald U.S. Presidents ?
+LOC                  ENTY                 What is the largest city on the Great Lakes ?
+LOC                  ENTY                 What country has the most time zones , with 11 ?
+DESC                 LOC                  What does Choo Choo Charlie say ?
+ENTY                 DESC                 What is a fear of thunder ?
+DESC                 LOC                  What does the Georgetown `` Hoya '' mean ?
+DESC                 HUM                  What does the name Kelly mean ?
+NUM                  DESC                 How old was Sir Edmund Hillary when he climbed Mt. Everest ?
+DESC                 LOC                  How was the ACLU formed ?
+HUM                  LOC                  Who tramped through Florida looking for the Fountain of Youth ?
+LOC                  NUM                  Where did the world come from ?
+DESC                 DESC                 What is multimedia ?
+HUM                  HUM                  Who invented the pull-tab opener on cans ?
+HUM                  NUM                  Who owns the St. Louis Rams ?
+HUM                  DESC                 What famed clown appeared on an early Howdy Doody Show and insisted that Clarabell be made up as a real clown ?
+LOC                  HUM                  What country has declared one-fifth of its territory off-limits to Russians ?
+DESC                 NUM                  How do you handle a hungry man ?
+LOC                  LOC                  What is one of the cities that the University of Minnesota is located in ?
+LOC                  NUM                  Where can I find detailed information about Manchukuo ?
+HUM                  NUM                  What are the major companies that are part of Dow Jones ?
+DESC                 DESC                 What do the names Andrew and Christina mean ?
+DESC                 HUM                  Why does a candle need a wick ?
+ENTY                 ENTY                 What is the name of the second space shuttle ?
+NUM                  ENTY                 When was Queen Victoria born ?
+LOC                  DESC                 Where did Bill Gates go to college ?
+NUM                  DESC                 When was the first railroad from the east coast to the west coast completed ?
+NUM                  DESC                 When did the last Americans leave Vietnam ?
+DESC                 HUM                  How can I get a comic character I made copyrighted and published ?
+HUM                  DESC                 What Pope inaugurated Vatican International Radio ?
+ENTY                 ENTY                 Who was the first animal into space ?
+NUM                  LOC                  What is the probability that at least 2 out of 25 people will have the same birthday ?
+ENTY                 DESC                 What was the name of the flight that Fawaz Younis hijacked ?
+HUM                  DESC                 Who is Colin Powell ?
+ENTY                 NUM                  What kind of education do I need to become a flight attendant ?
+HUM                  HUM                  Who is the French literary charcter who is chiefly famous for his enormous nose ?
+HUM                  HUM                  What business exports the sparkling wine Spumante ?
+LOC                  DESC                 Where did King Francis I hang the `` Mona Lisa '' when he owned it ?
+HUM                  ENTY                 Who were the 1974 Oscar winners ?
+DESC                 NUM                  What is Butterfield 8 in Butterfield 8 ?
+HUM                  LOC                  Name the Ranger who was always after Yogi Bear .
+DESC                 NUM                  How does a submarine operate ?
+NUM                  DESC                 How many quarts of whole milk is needed to make one pound of butter ?
+DESC                 DESC                 What is the root of all evil ?
+LOC                  LOC                  Where is the Isle of Man ?
+HUM                  HUM                  Who was the first black performer to have his own network TV show ?
+HUM                  DESC                 What Cherokee Indian gave his name to a tree ?
+NUM                  NUM                  What is the population of Mexico ?
+ENTY                 DESC                 What drink contains as many types of rum as possible ?
+NUM                  ENTY                 How big is the largest diamond ?
+NUM                  ENTY                 What does an average daycare provider get paid in New England ?
+HUM                  LOC                  Who won the Nobel Peace Prize in 1991 ?
+ENTY                 HUM                  What did British companies stick 175 , 0 tons of tea into in 1982 ?

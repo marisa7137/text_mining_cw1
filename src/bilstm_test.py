@@ -109,4 +109,11 @@ def test(t, test_data, num_classes, model_pth, output_pth):
 
     print(
         "Test", f'loss: {np.mean(test_losses)}, accuracy: {np.mean(test_accs)}, f1_score: {np.mean(test_F1s)}')
+    
     test_output(t, predValue_idx, num_classes, output_pth)
+    
+    with open(output_pth, "r+") as f:
+        old_content = f.read()  # Read existing content
+        f.seek(0)  # Move cursor to beginning of file
+        f.write("The macro F1 for this experiment is {}\n ".format(test_F1s[-1]) + old_content)  # Write new content and old content back to file
+

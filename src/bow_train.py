@@ -7,12 +7,13 @@ from bow import Model
 import torch.optim as optim
 from sklearn.metrics import accuracy_score, f1_score
 from configparser import ConfigParser
+from bow_test import test_output
 # import the configure files
 config = ConfigParser()
 config.read("../data/bow.config")
 
 
-def development(batch_size, dev_loader, model, loss_function, dev_losses, dev_accs, dev_F1s):
+def development(batch_size, dev_loader, model, loss_function, dev_losses, dev_accs, dev_F1s,t,numofclasses,output_path):
     '''
     The function for model development (fine-tuning/optimisation) at the end of each epoch
     :param int batch_size: the developing batch size
@@ -52,11 +53,16 @@ def development(batch_size, dev_loader, model, loss_function, dev_losses, dev_ac
             f1 = f1_score(output_idx, dev_labels, average="macro")
             dev_accs.append(acc)
             dev_F1s.append(f1)
+            test_output(t, output_idx, numofclasses,output_path)
+            with open(output_path, "r+") as f:
+                old_content = f.read()  # Read existing content
+                f.seek(0)  # Move cursor to beginning of file
+                f.write("The macro F1 for this experiment is {}\n ".format(dev_F1s[-1]) + old_content)  # Write new content and old content back to file
 
     return dev_losses, dev_accs, dev_F1s
 
 
-def train(t, train_data, dev_data, num_classes, pretrain, lr, epoch, batch, embedding_dim, freeze, hidden_dim, hidden_layer, pre_trained_weight=None):
+def train(t, train_data, dev_data, num_classes, pretrain, lr, epoch, batch, embedding_dim, freeze, hidden_dim, hidden_layer,output_file,pre_trained_weight=None):
     '''
     The main function for training
     :param TextParser t: test parser
@@ -135,7 +141,7 @@ def train(t, train_data, dev_data, num_classes, pretrain, lr, epoch, batch, embe
             # model development at the end of each epoch. There are 9 batches in each epoch
             if cnt == 9:
                 dev_losses, dev_accs, dev_F1s = development(
-                    batch, dev_loader, model, loss_function, dev_losses, dev_accs, dev_F1s)
+                    batch, dev_loader, model, loss_function, dev_losses, dev_accs, dev_F1s,t,num_classes,output_file)
                 print(
                     "Dev batch", f'epoch: {e+1}, loss: {dev_losses[-1]}, accuracy: {dev_accs[-1]}, f1 Score: {dev_F1s[-1]}')
 

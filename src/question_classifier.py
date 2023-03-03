@@ -96,6 +96,8 @@ if __name__ == '__main__':
                                     "param", "hidden_dim"),
                                 hidden_layer=config.getint(
                                     "param", "hidden_layer"),
+                                output_file= config.get(
+                                       "param", "dev_fine_output"),
                                 pre_trained_weight=pre_trained_weight)
             elif (config.get("param", "model") == "bilstm"):
                 print("Model: bilstm")
@@ -114,6 +116,8 @@ if __name__ == '__main__':
                                        "param", "hidden_dim"),
                                    hidden_layer=config.getint(
                                        "param", "hidden_layer"),
+                                   output_file= config.get(
+                                       "param", "dev_fine_output"),
                                    pre_trained_weight=pre_trained_weight)
         elif(config.get("param", "class_label") == "coarse"):
             print("Class Label: coarse")
@@ -132,6 +136,8 @@ if __name__ == '__main__':
                                     "param", "hidden_dim"),
                                 hidden_layer=config.getint(
                                     "param", "hidden_layer"),
+                                output_file= config.get(
+                                       "param", "dev_fine_output"),
                                 pre_trained_weight=pre_trained_weight)
             elif (config.get("param", "model") == "bilstm"):
                 print("Model: bilstm")
@@ -149,6 +155,8 @@ if __name__ == '__main__':
                                        "param", "hidden_dim"),
                                    hidden_layer=config.getint(
                                        "param", "hidden_layer"),
+                                   output_file=config.get(
+                                       "param", "dev_coarse_output"),
                                    pre_trained_weight=pre_trained_weight)
     # Tesing Fucntion
     if(args.test):

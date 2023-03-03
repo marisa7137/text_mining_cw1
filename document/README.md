@@ -48,14 +48,19 @@ Mode: Testing
 Class Label: fine
 ```
 And the result will store as below:
-```
-Groud Truth Label    Predict Label        Question            
-NUM:dist             NUM:dist             How far is it from Denver to Aspen ?
-LOC:city             LOC:other            What county is Modesto , California in ?
-HUM:desc             HUM:desc             Who was Galileo ?   
-DESC:def             DESC:def             What is an atom ?   
-NUM:date             NUM:date             When did Hawaii become a state ?
-NUM:dist             NUM:dist             How tall is the Sears Building ?
+### Note (If you use train mode the output file will be the performance and classification results from dev data.If you use test mode, the output file will be the performance and classification results from test data.) (For the dev output file please wait the entie epochs finished to see the final result since it is updating each epoch)
+ ```
+The macro F1 for this experiment is 0.8574327908216662
+ Groud Truth Label    Predict Label        Question            
+NUM                  NUM                  How far is it from Denver to Aspen ?
+LOC                  LOC                  What county is Modesto , California in ?
+HUM                  HUM                  Who was Galileo ?   
+DESC                 DESC                 What is an atom ?   
+NUM                  NUM                  When did Hawaii become a state ?
+NUM                  NUM                  How tall is the Sears Building ?
+HUM                  HUM                  George Bush purchased a small interest in which baseball team ?
+ENTY                 DESC                 What is Australia 's national flower ?
+DESC                 DESC                 Why does the moon turn orange ?
 ```
 
 3. **Parameter Setting Change**. The user can change the default setting in the corrsponding config file as well as the model's parameters.
