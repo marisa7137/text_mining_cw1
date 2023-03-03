@@ -60,7 +60,7 @@ class Model(nn.Module):
 
 
         self.norm = nn.BatchNorm1d(2*hidden_dim_bilstm) # BatchNorm2d only accepts 4D inputs while BatchNorm1d accepts 2D or 3D inputs
-        self.dropout = nn.Dropout(p=0.2) # dropout
+        self.dropout = nn.Dropout(p=0.3) # dropout
 
 
 
