@@ -1,4 +1,5 @@
 ### Question classification COMP61332 Text Mining Running Instruction
+#### Note: We have already produced the vocablary list using the function inside the text_parser.py also we have produced the modified glove vocab and fine and coarse labels.If you want to test the fucntions, you can call the functions and setting the to file = True
 
 The whole document contains three sub folders:
 1. **data**: The data folder contains the config files, datasets (train.txt, dev.txt, test.txt, train_550.label.txt), output files, preprocessing files ( vocab, stopwords and labels .etc.)
